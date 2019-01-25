@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>记一次防止渗透的措施 | 炎の博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在后端做文件上传的格式校验时,不能只对Content-Type做校验12345678910111213if(!$image = CUploadedFile::getInstanceByName(&amp;apos;upload_file&amp;apos;)) &amp;#123;            $response[&amp;apos;code&amp;apos;] = -2;            $response[&amp;apo">
+  <meta name="description" content="在后端做文件上传的格式校验时,不能只对Content-Type做校验">
 <meta name="keywords" content="记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="记一次防止渗透的措施">
 <meta property="og:url" content="http://yoursite.com/2019/01/14/记一次防止渗透的措施/index.html">
 <meta property="og:site_name" content="炎の博客">
-<meta property="og:description" content="在后端做文件上传的格式校验时,不能只对Content-Type做校验12345678910111213if(!$image = CUploadedFile::getInstanceByName(&amp;apos;upload_file&amp;apos;)) &amp;#123;            $response[&amp;apos;code&amp;apos;] = -2;            $response[&amp;apo">
+<meta property="og:description" content="在后端做文件上传的格式校验时,不能只对Content-Type做校验">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-17T14:48:21.044Z">
+<meta property="og:updated_time" content="2019-01-25T07:29:58.798Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记一次防止渗透的措施">
-<meta name="twitter:description" content="在后端做文件上传的格式校验时,不能只对Content-Type做校验12345678910111213if(!$image = CUploadedFile::getInstanceByName(&amp;apos;upload_file&amp;apos;)) &amp;#123;            $response[&amp;apos;code&amp;apos;] = -2;            $response[&amp;apo">
+<meta name="twitter:description" content="在后端做文件上传的格式校验时,不能只对Content-Type做校验">
   
     <link rel="alternative" href="/atom.xml" title="炎の博客" type="application/atom+xml">
   
@@ -173,7 +173,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>在后端做文件上传的格式校验时,不能只对Content-Type做校验</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">if(!$image = CUploadedFile::getInstanceByName(&apos;upload_file&apos;)) &#123;</span><br><span class="line">            $response[&apos;code&apos;] = -2;</span><br><span class="line">            $response[&apos;msg&apos;]  =  &apos;param error&apos;;</span><br><span class="line">        &#125; else if($image-&gt;getSize() == 0 || $image-&gt;getSize() &gt; 1*1024*1024) &#123;</span><br><span class="line">            $response[&apos;code&apos;] = -3;</span><br><span class="line">            $response[&apos;msg&apos;]  =  &apos;size error&apos;;</span><br><span class="line">        &#125; else if(!in_array($image-&gt;type, array(&apos;image/jpeg&apos;, &apos;image/png&apos;, &apos;image/gif&apos;)))&#123;</span><br><span class="line">            $response[&apos;code&apos;] = -4;</span><br><span class="line">            $response[&apos;msg&apos;]  = &apos;type error&apos;;</span><br><span class="line">        &#125; else if(!$image-&gt;saveAs($local_file.&apos;.&apos;.$image-&gt;extensionName)) &#123;</span><br><span class="line">            $response[&apos;code&apos;] = -5;</span><br><span class="line">            $response[&apos;msg&apos;]  = &apos;file save error&apos;;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></p>
+        <p><strong>在后端做文件上传的格式校验时,不能只对Content-Type做校验</strong><br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">if(!$image = CUploadedFile::getInstanceByName(&apos;upload_file&apos;)) &#123;</span><br><span class="line">            $response[&apos;code&apos;] = -2;</span><br><span class="line">            $response[&apos;msg&apos;]  =  &apos;param error&apos;;</span><br><span class="line">        &#125; else if($image-&gt;getSize() == 0 || $image-&gt;getSize() &gt; 1*1024*1024) &#123;</span><br><span class="line">            $response[&apos;code&apos;] = -3;</span><br><span class="line">            $response[&apos;msg&apos;]  =  &apos;size error&apos;;</span><br><span class="line">        &#125; else if(!in_array($image-&gt;type, array(&apos;image/jpeg&apos;, &apos;image/png&apos;, &apos;image/gif&apos;)))&#123;</span><br><span class="line">            $response[&apos;code&apos;] = -4;</span><br><span class="line">            $response[&apos;msg&apos;]  = &apos;type error&apos;;</span><br><span class="line">        &#125; else if(!$image-&gt;saveAs($local_file.&apos;.&apos;.$image-&gt;extensionName)) &#123;</span><br><span class="line">            $response[&apos;code&apos;] = -5;</span><br><span class="line">            $response[&apos;msg&apos;]  = &apos;file save error&apos;;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></p>
 <p>项目原先的代码文件类型处只对Content-Type做了校验,无法防止渗透,<br>测试人员可以通过修改文件后缀名配合BuirSuit等抓包工具在绕过前端验证后删除后缀名达到成功上传其他格式文件的限制</p>
 <blockquote>
 <p>改善措施:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">else if(!in_array($image-&gt;extensionName,array(&apos;jpg&apos;,&apos;jpeg&apos;, &apos;png&apos;, &apos;gif&apos;)))&#123;</span><br><span class="line">            $response[&apos;code&apos;] = -4;</span><br><span class="line">            $response[&apos;msg&apos;]  = &apos;type error&apos;;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></p>
@@ -293,8 +293,8 @@
     </a>
   
   
-    <a href="/2019/01/14/PHP学习笔记/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">PHP学习笔记</div>
+    <a href="/2019/01/14/PHP笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">PHP笔记</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -431,15 +431,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">php</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -447,7 +447,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
               <li class="article-tag-list-item">

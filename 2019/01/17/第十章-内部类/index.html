@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>第十章 内部类 | 炎の博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="了解外围类,并且能与之通信内部类能访问其外围对象的所有成员而不需要任何特殊条件，当某个外围类对象创建了一个内部类对象时，此内部类对象必定会秘密地捕获一个指向那个外部类对象的引用，然后在你访问此外围类的成员时,就是用那个引用来选择外围的成员。使用.this 和.new需要需要生成对外部类对象的引用,可以使用外部类的名字后紧跟原点和this.1234567891011121314151617publi">
+  <meta name="description" content="了解外围类,并且能与之通信">
 <meta name="keywords" content="java编程思想,内部类">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第十章 内部类">
 <meta property="og:url" content="http://yoursite.com/2019/01/17/第十章-内部类/index.html">
 <meta property="og:site_name" content="炎の博客">
-<meta property="og:description" content="了解外围类,并且能与之通信内部类能访问其外围对象的所有成员而不需要任何特殊条件，当某个外围类对象创建了一个内部类对象时，此内部类对象必定会秘密地捕获一个指向那个外部类对象的引用，然后在你访问此外围类的成员时,就是用那个引用来选择外围的成员。使用.this 和.new需要需要生成对外部类对象的引用,可以使用外部类的名字后紧跟原点和this.1234567891011121314151617publi">
+<meta property="og:description" content="了解外围类,并且能与之通信">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-18T02:53:47.736Z">
+<meta property="og:updated_time" content="2019-01-25T07:29:50.401Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第十章 内部类">
-<meta name="twitter:description" content="了解外围类,并且能与之通信内部类能访问其外围对象的所有成员而不需要任何特殊条件，当某个外围类对象创建了一个内部类对象时，此内部类对象必定会秘密地捕获一个指向那个外部类对象的引用，然后在你访问此外围类的成员时,就是用那个引用来选择外围的成员。使用.this 和.new需要需要生成对外部类对象的引用,可以使用外部类的名字后紧跟原点和this.1234567891011121314151617publi">
+<meta name="twitter:description" content="了解外围类,并且能与之通信">
   
     <link rel="alternative" href="/atom.xml" title="炎の博客" type="application/atom+xml">
   
@@ -173,7 +173,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="了解外围类-并且能与之通信"><a href="#了解外围类-并且能与之通信" class="headerlink" title="了解外围类,并且能与之通信"></a>了解外围类,并且能与之通信</h2><p>内部类能访问其外围对象的所有成员而不需要任何特殊条件，当某个外围类对象创建了一个内部类对象时，此内部类对象必定会秘密地捕获一个指向那个外部类对象的引用，然后在你访问此外围类的成员时,就是用那个引用来选择外围的成员。<br>使用.this 和.new<br>需要需要生成对外部类对象的引用,可以使用外部类的名字后紧跟原点和this.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class DotThis&#123;</span><br><span class="line">  void f()&#123;System.out.println(&quot;DotThis.f()&quot;);&#125;</span><br><span class="line">  public class Inner&#123;</span><br><span class="line">    public class DotThis outer()&#123;</span><br><span class="line">      return DotThis.this;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  public Inner inner()&#123;return new TInner();&#125;</span><br><span class="line">  public static void main(String[] args)&#123;</span><br><span class="line">    DotThis dt = new DotThis();</span><br><span class="line">    DotThis.Inner dti = dt.inner();</span><br><span class="line">    dti.outer().f();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">/*Output:</span><br><span class="line">DotThis.f()</span><br><span class="line">*/</span><br></pre></td></tr></table></figure></p>
+        <h2 id="了解外围类-并且能与之通信"><a href="#了解外围类-并且能与之通信" class="headerlink" title="了解外围类,并且能与之通信"></a>了解外围类,并且能与之通信</h2><a id="more"></a>
+<p>内部类能访问其外围对象的所有成员而不需要任何特殊条件，当某个外围类对象创建了一个内部类对象时，此内部类对象必定会秘密地捕获一个指向那个外部类对象的引用，然后在你访问此外围类的成员时,就是用那个引用来选择外围的成员。<br>使用.this 和.new<br>需要需要生成对外部类对象的引用,可以使用外部类的名字后紧跟原点和this.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class DotThis&#123;</span><br><span class="line">  void f()&#123;System.out.println(&quot;DotThis.f()&quot;);&#125;</span><br><span class="line">  public class Inner&#123;</span><br><span class="line">    public class DotThis outer()&#123;</span><br><span class="line">      return DotThis.this;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  public Inner inner()&#123;return new TInner();&#125;</span><br><span class="line">  public static void main(String[] args)&#123;</span><br><span class="line">    DotThis dt = new DotThis();</span><br><span class="line">    DotThis.Inner dti = dt.inner();</span><br><span class="line">    dti.outer().f();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">/*Output:</span><br><span class="line">DotThis.f()</span><br><span class="line">*/</span><br></pre></td></tr></table></figure></p>
 <p>直接创建内部类的对象:<br>在ner表达式中提供对其外部类对象的引用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DotNew dn = new DotNew();</span><br><span class="line">DotNew.Inner dni = dn.new Inner();</span><br></pre></td></tr></table></figure></p>
 <h2 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h2><p><strong>如果定义一个匿名内部类,并且希望它日用外部定义的对象,那么编译器会要求其参数引用为final</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public interface Destination&#123;</span><br><span class="line">  String readLabel();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Parcel9&#123;</span><br><span class="line">  public Destination destination(final String dest)&#123;</span><br><span class="line">    return new Destination()&#123;</span><br><span class="line">      private String label = dest;</span><br><span class="line">      public String readLabel()&#123;return label&#125;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>这里引用了外部类的String对象dest,所以要求参数引用必须为final</p>
@@ -440,15 +441,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">php</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -456,7 +457,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
               <li class="article-tag-list-item">

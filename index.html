@@ -250,22 +250,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>java的动态代理机制中，有两个重要的类或接口，一个是 <strong>InvocationHandler(Interface)</strong>、另一个是 Proxy(Class)</p>
-<h2 id="InvocationHandler"><a href="#InvocationHandler" class="headerlink" title="InvocationHandler:"></a>InvocationHandler:</h2><blockquote>
-<p>InvocationHandler is the interface implemented by the invocation handler of a proxy instance.<br>InvocationHandler是代理实例的调用处理程序实现的接口<br>Each proxy instance has an associated invocation handler. When a method is invoked on a proxy instance, the method invocation is encoded and dispatched to the invoke method of its invocation handler.<br>每个代理实例都有一个关联的调用处理程序。在代理实例上调用方法时，方法调用将被编码并发送到其调用处理程序的invoke方法。</p>
-</blockquote>
-<h2 id="invoke方法"><a href="#invoke方法" class="headerlink" title="invoke方法"></a>invoke方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Object invoke(Object proxy, Method method, Object[] args) throws Throwable</span><br><span class="line"></span><br><span class="line">proxy:　　指代我们所代理的那个真实对象</span><br><span class="line">method:　　指代的是我们所要调用真实对象的某个方法的Method对象</span><br><span class="line">args:　　指代的是调用真实对象某个方法时接受的参数</span><br></pre></td></tr></table></figure>
-<h2 id="newProxyInstance"><a href="#newProxyInstance" class="headerlink" title="newProxyInstance"></a>newProxyInstance</h2><p>Proxy这个类的作用就是用来动态创建一个代理对象的类，它提供了许多的方法，用的最多的就是 newProxyInstance 这个方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public static Object newProxyInstance(ClassLoader loader, Class&lt;?&gt;[] interfaces, InvocationHandler h) throws IllegalArgumentException</span><br><span class="line"></span><br><span class="line">loader:　　一个ClassLoader对象，定义了由哪个ClassLoader对象来对生成的代理对象进行加载</span><br><span class="line"></span><br><span class="line">interfaces:　　一个Interface对象的数组，表示的是我将要给我需要代理的对象提供一组什么接口，如果我提供了一组接口给它，那么这个代理对象就宣称实现了该接口(多态)，这样我就能调用这组接口中的方法了</span><br><span class="line"></span><br><span class="line">h:　　一个InvocationHandler对象，表示的是当我这个动态代理对象在调用方法的时候，会关联到哪一个InvocationHandler对象上</span><br></pre></td></tr></table></figure></p>
-<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>1.定义一个Subject类型的接口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public interface Subject &#123;</span><br><span class="line">//定义了两个方法</span><br><span class="line">    public void rent();</span><br><span class="line">    public void hello(String str);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>2.定义一个类来实现这个接口，这个类就是真实对象，RealSubject类：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class RealSubject implements Subject&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void rent() &#123;</span><br><span class="line">        System.out.println(&quot;I want to rent&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void hello(String str) &#123;</span><br><span class="line">        System.out.println(&quot;hello: &quot; + str);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>3.定义一个动态代理类，每一个动态代理类都必须要实现 InvocationHandler<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import java.lang.reflect.InvocationHandler;</span><br><span class="line">import java.lang.reflect.Method;</span><br><span class="line"></span><br><span class="line">public class DynamicProxy implements InvocationHandler &#123;</span><br><span class="line">    //　这个就是我们要代理的真实对象</span><br><span class="line">    private Object subject;</span><br><span class="line"></span><br><span class="line">    //    构造方法，给我们要代理的真实对象赋初值</span><br><span class="line">    public DynamicProxy(Object subject)</span><br><span class="line">    &#123;</span><br><span class="line">        this.subject = subject;</span><br><span class="line">    &#125;</span><br><span class="line">    @Override</span><br><span class="line">    public Object invoke(Object object, Method method, Object[] args) throws Throwable &#123;</span><br><span class="line">    //在代理真实对象前我们可以添加一些自己的操作</span><br><span class="line">        System.out.println(&quot;before rent house&quot;);</span><br><span class="line">        System.out.println(&quot;Method: &quot;+method);</span><br><span class="line">        //此时是调用真实对象的方法</span><br><span class="line">        method.invoke(subject,args);</span><br><span class="line">        //代理后同样可以添加一些操作</span><br><span class="line">        //doSomething();</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="Client类"><a href="#Client类" class="headerlink" title="Client类"></a>Client类</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">import java.lang.reflect.InvocationHandler;</span><br><span class="line">import java.lang.reflect.Proxy;</span><br><span class="line"></span><br><span class="line">public class Client &#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">    //    要代理的真实对象</span><br><span class="line">        RealSubject realSubject = new RealSubject();</span><br><span class="line">    //    要代理哪个真实对象，就将该对象传进去，最后是通过该真实对象来调用其方法的</span><br><span class="line">        InvocationHandler handler = new DynamicProxy(realSubject);</span><br><span class="line">        Subject subject =(Subject) Proxy.newProxyInstance(</span><br><span class="line">                                                            realSubject.getClass().getClassLoader(),//真实类的类加载器</span><br><span class="line">                                                            realSubject.getClass().getInterfaces(),//被代理类的接口</span><br><span class="line">                                                            handler//代理对象</span><br><span class="line">                                                          );</span><br><span class="line">        System.out.println(subject.getClass().getName());</span><br><span class="line">        subject.rent();</span><br><span class="line">        subject.hello(&quot;The world will become better&quot;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出:</span><br><span class="line">com.sun.proxy.$Proxy0</span><br><span class="line">before rent house</span><br><span class="line">Method: public abstract void 动态代理.Subject.rent()</span><br><span class="line">I want to rent</span><br><span class="line">before rent house</span><br><span class="line">Method: public abstract void 动态代理.Subject.hello(java.lang.String)</span><br><span class="line">hello: The world will become better</span><br></pre></td></tr></table></figure>
-<p>通过 Proxy.newProxyInstance 创建的代理对象subject是在jvm运行时动态生成的一个对象，它并<strong>不是InvocationHandler类型，也不是我们定义的那组接口的类型，而是在运行时动态生成的一个对象，并且命名方式都是这样的形式，以$开头，proxy为中，最后一个数字表示对象的标号</strong>。</p>
-
+        <p>java的动态代理机制中，有两个重要的类或接口，一个是 <strong>InvocationHandler(Interface)</strong>、另一个是 Proxy(Class)<br>
+        
+          <a class="article-more-a" href="/2019/01/19/java实现动态代理/#more">more >></a>
+        
       
 
       
-    </div>
+    </p></div>
     <div class="article-info article-info-index">
       
       
@@ -338,17 +330,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="IOC-DI"><a href="#IOC-DI" class="headerlink" title="IOC/DI"></a>IOC/DI</h2><h3 id="1-概念及原理"><a href="#1-概念及原理" class="headerlink" title="1. 概念及原理"></a>1. 概念及原理</h3><blockquote>
-<p>IOC: Inversion of Control(控制反转)是一种设计思想,利用了工厂模式。对象及其依赖对象的创建及维护都不需要在应用程序中实现，将其交给IOC容器去管理。<strong>传统的开发中，我们自己在对象内部创建依赖对象并注入当前对象，完成依赖关系的维护；对于IOC而言，强调将主动变为被动，由IOC容器来负责依赖对象的创建和查找，由IOC容器来进行注入组合对象</strong>，只需要在相关的配置文件中维护对象之间的依赖关系即可。</p>
-</blockquote>
-<blockquote>
-<p>DI: Dependency Injection，即“依赖注入”。其实IOC和DI本就是同一个概念的两种不同的表述，<strong>应用程序依赖容器提供的外部对象，容器将其依赖的外部资源在运行期注入到应用程序中；某个对象被调用时，其所依赖的对象由容器注入</strong>。</p>
-</blockquote>
-<h2 id="2-AOP"><a href="#2-AOP" class="headerlink" title="2.AOP"></a>2.AOP</h2><blockquote>
-<p>AOP利用一种称为“<strong>横切</strong>”的技术，剖解开封装的对象内部，<strong>将那些影响多个类的公共行为封装到一个可重用模块，并将其名为切面(Aspect)</strong>。所谓“方面”，简单地说，就是将那些与业务无关，却为业务模块所共同调用的逻辑封装起来的部分。以便于减少系统的重复代码，降低模块间的耦合度，并有利于系统维护。<br>　　使用“横切”技术，AOP把软件系统分为两个部分：<strong>核心关注点（业务逻辑）和横切关注点（通用逻辑，即方面）。业务处理的主要流程是核心关注点，与之关系不大的部分是横切关注点。</strong>横切关注点的特点是，其经常发生在核心关注点的多处，而各处都基本相似。比如权限认证、日志、事务处理，debug管理，性能检测等。AOP的作用在于分离系统中的各种关注点，将核心关注点和横切关注点分离开来。</p>
-</blockquote>
-<p>　　 </p>
-
+        <h2 id="IOC-DI"><a href="#IOC-DI" class="headerlink" title="IOC/DI"></a>IOC/DI</h2>
+        
+          <a class="article-more-a" href="/2019/01/19/spring相关/#more">more >></a>
+        
       
 
       
@@ -421,18 +406,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="了解外围类-并且能与之通信"><a href="#了解外围类-并且能与之通信" class="headerlink" title="了解外围类,并且能与之通信"></a>了解外围类,并且能与之通信</h2><p>内部类能访问其外围对象的所有成员而不需要任何特殊条件，当某个外围类对象创建了一个内部类对象时，此内部类对象必定会秘密地捕获一个指向那个外部类对象的引用，然后在你访问此外围类的成员时,就是用那个引用来选择外围的成员。<br>使用.this 和.new<br>需要需要生成对外部类对象的引用,可以使用外部类的名字后紧跟原点和this.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class DotThis&#123;</span><br><span class="line">  void f()&#123;System.out.println(&quot;DotThis.f()&quot;);&#125;</span><br><span class="line">  public class Inner&#123;</span><br><span class="line">    public class DotThis outer()&#123;</span><br><span class="line">      return DotThis.this;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  public Inner inner()&#123;return new TInner();&#125;</span><br><span class="line">  public static void main(String[] args)&#123;</span><br><span class="line">    DotThis dt = new DotThis();</span><br><span class="line">    DotThis.Inner dti = dt.inner();</span><br><span class="line">    dti.outer().f();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">/*Output:</span><br><span class="line">DotThis.f()</span><br><span class="line">*/</span><br></pre></td></tr></table></figure></p>
-<p>直接创建内部类的对象:<br>在ner表达式中提供对其外部类对象的引用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DotNew dn = new DotNew();</span><br><span class="line">DotNew.Inner dni = dn.new Inner();</span><br></pre></td></tr></table></figure></p>
-<h2 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h2><p><strong>如果定义一个匿名内部类,并且希望它日用外部定义的对象,那么编译器会要求其参数引用为final</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public interface Destination&#123;</span><br><span class="line">  String readLabel();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Parcel9&#123;</span><br><span class="line">  public Destination destination(final String dest)&#123;</span><br><span class="line">    return new Destination()&#123;</span><br><span class="line">      private String label = dest;</span><br><span class="line">      public String readLabel()&#123;return label&#125;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>这里引用了外部类的String对象dest,所以要求参数引用必须为final</p>
-<h2 id="嵌套类-static"><a href="#嵌套类-static" class="headerlink" title="嵌套类(static)"></a>嵌套类(static)</h2><p>如果不需要内部类与外围类对象之间有练习,可以将内部类声明为static<br>普通内部类与static的嵌套类的区别:</p>
-<blockquote>
-<p>1.创建嵌套类的对象,并不需要其外围类的对象.<br>2.不能从嵌套类的对象中访问非静态的外围类对象.<br>3.普通的内部类不能有static数据和static字段,也不能包含嵌套类,即(内部类中还有内部类),而嵌套类(static)可以做到.</p>
-</blockquote>
-<h2 id="接口内部的类"><a href="#接口内部的类" class="headerlink" title="接口内部的类"></a>接口内部的类</h2><p>正常情况下,不能在接口内置任何代码,但嵌套类可以作为接口的一部分,放置到接口中的任何类都自动是public 和 static的.<br>因为类是static的,只是将嵌套类置于接口的命名空间,并不违反接口的规则. 甚至可以在内部类中实现其外围接口</p>
-<h2 id="从多层嵌套类访问外部成员"><a href="#从多层嵌套类访问外部成员" class="headerlink" title="从多层嵌套类访问外部成员"></a>从多层嵌套类访问外部成员</h2><p>内部类—可以透明地访问所有它的外围成员(不论是不是private)<br>嵌套内部类—可以透明地访问它所嵌入的外围类的所有成员<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class MNA&#123;</span><br><span class="line">  private void f()&#123;&#125;</span><br><span class="line">  class A&#123;</span><br><span class="line">    private void g()&#123;&#125;</span><br><span class="line">    public class B&#123;</span><br><span class="line">      void h()&#123;</span><br><span class="line">        g();</span><br><span class="line">        f();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">public  class MultiNestingAccess&#123;</span><br><span class="line">  public static void main(String[] args)&#123;</span><br><span class="line">    MNA mna = new MNA();</span><br><span class="line">    MNA.A mnaa = mna.new A();</span><br><span class="line">    MNA.A.B mnaab = mnaa.new B();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><strong>可以看到在MNA,A,A中, 调用方法g()和f()并不需要任何条件(即使被声明为private)</strong></p>
-
+        <h2 id="了解外围类-并且能与之通信"><a href="#了解外围类-并且能与之通信" class="headerlink" title="了解外围类,并且能与之通信"></a>了解外围类,并且能与之通信</h2>
+        
+          <a class="article-more-a" href="/2019/01/17/第十章-内部类/#more">more >></a>
+        
       
 
       
@@ -509,11 +486,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="git-clone-url-克隆项目到本地"><a href="#git-clone-url-克隆项目到本地" class="headerlink" title="git clone url 克隆项目到本地"></a>git clone url 克隆项目到本地</h3><h3 id="git-push-提交"><a href="#git-push-提交" class="headerlink" title="git push 提交"></a>git push 提交</h3><h3 id="git-branch-显示所有分支"><a href="#git-branch-显示所有分支" class="headerlink" title="git branch 显示所有分支"></a>git branch 显示所有分支</h3><h3 id="git-status-查看修改的内容"><a href="#git-status-查看修改的内容" class="headerlink" title="git status 查看修改的内容"></a>git status 查看修改的内容</h3><h3 id="git-add-确认所有修改"><a href="#git-add-确认所有修改" class="headerlink" title="git add . 确认所有修改"></a>git add . 确认所有修改</h3><h3 id="git-commit-m-“这里是注释”"><a href="#git-commit-m-“这里是注释”" class="headerlink" title="git commit -m “这里是注释”"></a>git commit -m “这里是注释”</h3><h3 id="git-diff-显示差别"><a href="#git-diff-显示差别" class="headerlink" title="git diff 显示差别"></a>git diff 显示差别</h3><h3 id="git-log-查看提交的日志"><a href="#git-log-查看提交的日志" class="headerlink" title="git log 查看提交的日志"></a>git log 查看提交的日志</h3><h3 id="git-rebase-i-startpoint-endpoint"><a href="#git-rebase-i-startpoint-endpoint" class="headerlink" title="git rebase -i  [startpoint]  [endpoint]"></a>git rebase -i  [startpoint]  [endpoint]</h3><blockquote>
-<p>其中-i的意思是–interactive，即弹出交互式的界面让用户编辑完成合并操作，[startpoint]  [endpoint]则指定了一个编辑区间，如果不指定[endpoint]，则该区间的终点默认是当前分支HEAD所指向的commit</p>
-</blockquote>
-<h3 id="fetch更新本地仓库两种方式"><a href="#fetch更新本地仓库两种方式" class="headerlink" title="fetch更新本地仓库两种方式"></a>fetch更新本地仓库两种方式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//方法一</span><br><span class="line">$ git fetch origin master //从远程的origin仓库的master分支下载代码到本地的origin master</span><br><span class="line"></span><br><span class="line">$ git log -p master.. origin/master//比较本地的仓库和远程参考的区别</span><br><span class="line"></span><br><span class="line">$ git merge origin/master//把远程下载下来的代码合并到本地仓库，远程的和本地的合并</span><br><span class="line">//方法二</span><br><span class="line">$ git fetch origin master:temp //从远程的origin仓库的master分支下载到本地并新建一个分支temp</span><br><span class="line"></span><br><span class="line">$ git diff temp//比较master分支和temp分支的不同</span><br><span class="line"></span><br><span class="line">$ git merge temp//合并temp分支到master分支</span><br><span class="line"></span><br><span class="line">$ git branch -d temp//删除temp</span><br></pre></td></tr></table></figure>
-
+        <h3 id="git-clone-url-克隆项目到本地"><a href="#git-clone-url-克隆项目到本地" class="headerlink" title="git clone url 克隆项目到本地"></a>git clone url 克隆项目到本地</h3>
+        
+          <a class="article-more-a" href="/2019/01/16/git常用命令/#more">more >></a>
+        
       
 
       
@@ -573,7 +549,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/15/Java基础零散笔记/">Java基础零散笔记</a>
+      <a class="article-title" href="/2019/01/15/Java基础零散笔记/">Java基础笔记</a>
     </h1>
   
 
@@ -662,19 +638,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="逻辑操作符"><a href="#逻辑操作符" class="headerlink" title="逻辑操作符:"></a>逻辑操作符:</h2><p>逻辑操作符使用双位字符(&amp;&amp;或者||)</p>
-<h2 id="按位操作符"><a href="#按位操作符" class="headerlink" title="按位操作符:"></a>按位操作符:</h2><p>按位与 : &amp;</p>
-<p>按位或 : |</p>
-<p>~符号 : 每一位都取反</p>
-<p>^异或操作符 : <strong>只要输入为的某一个是1,但不全是都是1,那么按位异或操作生成一个输出位1.(如果两个都为1,则异或的结果位0)</strong></p>
-<p>相反数 : 除了第一个符号位不变外,所有位都取反最后加1</p>
-<h2 id="Integer相关"><a href="#Integer相关" class="headerlink" title="Integer相关"></a>Integer相关</h2><p>Integer.MAX_VALUE =0111,1111,1111,1111,1111,1111,1111,1111. 一共31个1,值为2`31-1;</p>
-<p>Integer.MIN_VALUE= 1000,0000,0000,0000,0000,0000,0000,0000 一共32位,值为-2`31;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(Integer.MAX_VALUE+1==Integer.MIN_VALUE);</span><br></pre></td></tr></table></figure></p>
-<p>输出结果为TRUE<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(1&lt;&lt;31==Integer.MIN_VALUE);</span><br></pre></td></tr></table></figure></p>
-<p>输出结果为TRUE</p>
-<h2 id="截尾和舍入"><a href="#截尾和舍入" class="headerlink" title="截尾和舍入"></a>截尾和舍入</h2><p>将float和double转化为整形值时 总是对该数字进行截尾 如29.7 转化为29 0.7转化为0</p>
-<h2 id="提升"><a href="#提升" class="headerlink" title="提升"></a>提升</h2><p>基本类型的运算: 只要类型比int小 运算之前会把值自动转换为int，这样一来，最终生成的结果就是int类型。 <strong>表达式中出现的最大的数据类型决定了表达式最终结果的数据类型</strong></p>
-
+        <h2 id="逻辑操作符"><a href="#逻辑操作符" class="headerlink" title="逻辑操作符:"></a>逻辑操作符:</h2>
+        
+          <a class="article-more-a" href="/2019/01/15/第三章-操作符/#more">more >></a>
+        
       
 
       
@@ -751,17 +718,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>在后端做文件上传的格式校验时,不能只对Content-Type做校验</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">if(!$image = CUploadedFile::getInstanceByName(&apos;upload_file&apos;)) &#123;</span><br><span class="line">            $response[&apos;code&apos;] = -2;</span><br><span class="line">            $response[&apos;msg&apos;]  =  &apos;param error&apos;;</span><br><span class="line">        &#125; else if($image-&gt;getSize() == 0 || $image-&gt;getSize() &gt; 1*1024*1024) &#123;</span><br><span class="line">            $response[&apos;code&apos;] = -3;</span><br><span class="line">            $response[&apos;msg&apos;]  =  &apos;size error&apos;;</span><br><span class="line">        &#125; else if(!in_array($image-&gt;type, array(&apos;image/jpeg&apos;, &apos;image/png&apos;, &apos;image/gif&apos;)))&#123;</span><br><span class="line">            $response[&apos;code&apos;] = -4;</span><br><span class="line">            $response[&apos;msg&apos;]  = &apos;type error&apos;;</span><br><span class="line">        &#125; else if(!$image-&gt;saveAs($local_file.&apos;.&apos;.$image-&gt;extensionName)) &#123;</span><br><span class="line">            $response[&apos;code&apos;] = -5;</span><br><span class="line">            $response[&apos;msg&apos;]  = &apos;file save error&apos;;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></p>
-<p>项目原先的代码文件类型处只对Content-Type做了校验,无法防止渗透,<br>测试人员可以通过修改文件后缀名配合BuirSuit等抓包工具在绕过前端验证后删除后缀名达到成功上传其他格式文件的限制</p>
-<blockquote>
-<p>改善措施:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">else if(!in_array($image-&gt;extensionName,array(&apos;jpg&apos;,&apos;jpeg&apos;, &apos;png&apos;, &apos;gif&apos;)))&#123;</span><br><span class="line">            $response[&apos;code&apos;] = -4;</span><br><span class="line">            $response[&apos;msg&apos;]  = &apos;type error&apos;;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<p><strong>添加对文件后缀名的验证</strong></p>
-
+        <p><strong>在后端做文件上传的格式校验时,不能只对Content-Type做校验</strong><br>
+        
+          <a class="article-more-a" href="/2019/01/14/记一次防止渗透的措施/#more">more >></a>
+        
       
 
       
-    </div>
+    </p></div>
     <div class="article-info article-info-index">
       
       
@@ -810,19 +774,19 @@
 
 
   
-    <article id="post-PHP学习笔记" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-PHP笔记" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/14/PHP学习笔记/">PHP学习笔记</a>
+      <a class="article-title" href="/2019/01/14/PHP笔记/">PHP笔记</a>
     </h1>
   
 
         
-        <a href="/2019/01/14/PHP学习笔记/" class="archive-article-date">
+        <a href="/2019/01/14/PHP笔记/" class="archive-article-date">
   	<time datetime="2019-01-14T12:45:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-14</time>
 </a>
         
@@ -830,78 +794,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-变量"><a href="#1-变量" class="headerlink" title="1. 变量"></a>1. 变量</h2><p>变量以\$符号开始，后面跟着变量的名称<br>变量名必须以字母或者下划线字符开始<br>变量名只能包含字母数字字符以及下划线（A-z、0-9 和 _ ）<br>变量名不能包含空格<br>变量名是区分大小写的（$y 和 $Y 是两个不同的变量）</p>
-<h3 id="作用域："><a href="#作用域：" class="headerlink" title="作用域："></a>作用域：</h3><ul>
-<li>local</li>
-<li>global(global 关键字用于函数内访问全局变量)</li>
-<li>static(希望某个局部变量在方法执行完后不删除,则使用static)</li>
-<li>parameter(参数是在参数列表中声明的，作为函数声明的一部分：)</li>
-</ul>
-<h2 id="2-echo-和-print"><a href="#2-echo-和-print" class="headerlink" title="2. echo 和 print"></a>2. echo 和 print</h2><p>echo 和 print 区别:</p>
-<blockquote>
-<p>echo - 可以输出一个或多个字符串(echo “这是一个”, “字符串，”, “使用了”, “多个”, “参数。”;)<br>print - 只允许输出一个字符串，返回值总为 1<br>echo 输出的速度比 print 快， echo 没有返回值，print有返回值1。</p>
-</blockquote>
-<h2 id="3-EOF"><a href="#3-EOF" class="headerlink" title="3. EOF"></a>3. EOF</h2><blockquote>
-<p>PHP EOF(heredoc)是一种在命令行shell（如sh、csh、ksh、bash、PowerShell和zsh）和程序语言（像Perl、PHP、Python和Ruby）里定义一个字串的方法。</p>
-</blockquote>
-<ol>
-<li>必须后接分号，否则编译通不过。</li>
-<li>EOF 可以用任意其它字符代替，只需保证结束标识与开始标识一致。</li>
-<li>结束标识必须顶格独自占一行(即必须从行首开始，前后不能衔接任何空白和字符)。</li>
-<li>开始标识可以不带引号或带单双引号，不带引号与带双引号效果一致，解释内嵌的变量和转义符号，带单引号则不解释内嵌的变量和转义符号。</li>
-<li>当内容需要内嵌引号（单引号或双引号）时，不需要加转义符，本身对单双引号转义，此处相当与q和qq的用法。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo &lt;&lt;&lt;EOF</span><br><span class="line">    &lt;h1&gt;我的第一个标题&lt;/h1&gt;</span><br><span class="line">    &lt;p&gt;我的第一个段落。&lt;/p&gt;</span><br><span class="line">EOF;</span><br><span class="line">// 结束需要独立一行且前后不能空格</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-<p> <strong>EOF 的作用就是按照原样，包括换行格式什么的，输出在其内部的东西；在 PHP 定界符 EOF 中的任何特殊字符都不需要转义；</strong></p>
-<h2 id="4-数据类型"><a href="#4-数据类型" class="headerlink" title="4.数据类型"></a>4.数据类型</h2><p>String（字符串）, Integer（整型）, Float（浮点型）, Boolean（布尔型）, Array（数组）, Object（对象）, NULL（空值）。<br><strong>var_dump() 函数返回变量的数据类型和值：</strong></p>
-<p>PHP 对象:<br>对象数据类型也可以用于存储数据。</p>
-<blockquote>
-<p>在 PHP 中，对象必须声明。<br>首先，必须使用class关键字声明类对象。类是可以包含属性和方法的结构。<br>然后在类中定义数据类型，然后在实例化的类中使用数据类型：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class Car</span><br><span class="line">&#123;</span><br><span class="line">  var $color;</span><br><span class="line">  function __construct($color=&quot;green&quot;) &#123;</span><br><span class="line">    $this-&gt;color = $color;</span><br><span class="line">  &#125;</span><br><span class="line">  function what_color() &#123;</span><br><span class="line">    return $this-&gt;color;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<p>this 就是指向当前对象的指针</p>
-<h2 id="5-常量"><a href="#5-常量" class="headerlink" title="5.常量"></a>5.常量</h2><p>设置常量:</p>
-<pre><code>define(name,value,case_insensitive);
-</code></pre><p>name：必选参数，常量名称，即标志符。<br>value：必选参数，常量的值。<br>case_insensitive ：可选参数，如果设置为TRUE，该常量则大小写不敏感。默认是大小写敏感的。    </p>
-<p><strong>常量是全局的,常量在定义后，默认是全局变量，可以在整个运行的脚本的任何地方使用。</strong>    </p>
-<h2 id="5-字符串"><a href="#5-字符串" class="headerlink" title="5.字符串"></a>5.字符串</h2><p>PHP 并置运算符:</p>
-<blockquote>
-<p>在 PHP 中，只有一个字符串运算符,并置运算符 (.) 用于把两个字符串值连接起来。</p>
-</blockquote>
-<p>strlen() 函数:</p>
-<blockquote>
-<p>获取长度</p>
-</blockquote>
-<p> strpos() 函数:</p>
-<blockquote>
-<p>strpos() 函数用于在字符串内查找一个字符或一段指定的文本。<br>如果在字符串中找到匹配，该函数会返回第一个匹配的字符位置。如果未找到匹配，则返回 FALSE。</p>
-</blockquote>
-<h2 id="6-运算符"><a href="#6-运算符" class="headerlink" title="6.运算符"></a>6.运算符</h2><p> 优先级： &amp;&amp;  &gt;  =  &gt;  and<br> 优先级： ||  &gt;  =  &gt;  or</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$a = 3;</span><br><span class="line">$b = false;</span><br><span class="line">$c = $a or $b;</span><br><span class="line">var_dump($c);          // 这里的 $c 为 int 值3，而不是 boolean 值 true</span><br><span class="line">$d = $a || $b;</span><br><span class="line">var_dump($d);          //这里的 $d 就是 boolean 值 true </span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="7-PHP-数组"><a href="#7-PHP-数组" class="headerlink" title="7.PHP 数组"></a>7.PHP 数组</h2><p>PHP一维数组:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$cars=array(&quot;Volvo&quot;,&quot;BMW&quot;,&quot;Toyota&quot;);</span><br><span class="line">echo &quot;I like &quot; . $cars[0] . &quot;, &quot; . $cars[1] . &quot; and &quot; . $cars[2] . &quot;.&quot;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
-<p>关联数组:相当于键值对形式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$age=array(&quot;Peter&quot;=&gt;&quot;35&quot;,&quot;Ben&quot;=&gt;&quot;37&quot;,&quot;Joe&quot;=&gt;&quot;43&quot;);</span><br><span class="line">echo &quot;Peter is &quot; . $age[&apos;Peter&apos;] . &quot; years old.&quot;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
-<p>多维数组:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$cars = array</span><br><span class="line">(</span><br><span class="line">//二维数组</span><br><span class="line">array(&quot;Volvo&quot;,100,96),</span><br><span class="line">array(&quot;BMW&quot;,60,59),</span><br><span class="line">array(&quot;Toyota&quot;,110,100)</span><br><span class="line">);</span><br><span class="line">?&gt;</span><br><span class="line">//多维数组</span><br><span class="line">$sites = array</span><br><span class="line">(</span><br><span class="line">    &quot;runoob&quot;=&gt;array</span><br><span class="line">    (</span><br><span class="line">        &quot;菜鸟教程&quot;,</span><br><span class="line">        &quot;http://www.runoob.com&quot;</span><br><span class="line">    ),</span><br><span class="line">    &quot;google&quot;=&gt;array</span><br><span class="line">    (</span><br><span class="line">        &quot;Google 搜索&quot;,</span><br><span class="line">        &quot;http://www.google.com&quot;</span><br><span class="line">    ),</span><br><span class="line">    &quot;taobao&quot;=&gt;array</span><br><span class="line">    (</span><br><span class="line">        &quot;淘宝&quot;,</span><br><span class="line">        &quot;http://www.taobao.com&quot;</span><br><span class="line">    )</span><br><span class="line">);</span><br><span class="line">print(&quot;&lt;pre&gt;&quot;); // 格式化输出数组</span><br><span class="line">print_r($sites);</span><br><span class="line">print(&quot;&lt;/pre&gt;&quot;);</span><br></pre></td></tr></table></figure></p>
-<h2 id="8-PHP超级全局变量"><a href="#8-PHP超级全局变量" class="headerlink" title="8.PHP超级全局变量"></a>8.PHP超级全局变量</h2><ul>
-<li>\$GLOBALS</li>
-<li>\$_SERVER</li>
-<li>\$_REQUEST</li>
-<li>\$_POST</li>
-<li>\$_GET</li>
-<li>\$_FILES</li>
-<li>\$_ENV</li>
-<li>\$_COOKIE</li>
-<li>\$_SESSION</li>
-</ul>
-<h2 id="9-魔术常量"><a href="#9-魔术常量" class="headerlink" title="9.魔术常量"></a>9.魔术常量</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo &apos;这是第 &quot; &apos; . __LINE__ . &apos; &quot; 行&apos;;</span><br><span class="line">?&gt;</span><br><span class="line">&lt;?php</span><br><span class="line">echo &apos;该文件位于 &quot; &apos; . __FILE__ . &apos; &quot; &apos;;</span><br><span class="line">?&gt;</span><br><span class="line">&lt;?php</span><br><span class="line">echo &apos;该文件位于 &quot; &apos; . __DIR__ . &apos; &quot; &apos;;</span><br><span class="line">?&gt;</span><br><span class="line">&lt;?php</span><br><span class="line">function test() &#123;</span><br><span class="line">echo &apos;函数名为：&apos; . __FUNCTION__ ;</span><br><span class="line">&#125;</span><br><span class="line">test();</span><br><span class="line">?&gt;</span><br><span class="line">&lt;?php</span><br><span class="line">class test &#123;</span><br><span class="line">function _print() &#123;</span><br><span class="line">echo &apos;类名为：&apos; . __CLASS__ . &quot;&lt;br&gt;&quot;;</span><br><span class="line">echo &apos;函数名为：&apos; . __FUNCTION__ ;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">$t = new test();</span><br><span class="line">$t-&gt;_print();</span><br><span class="line">?&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//trait</span><br><span class="line">&lt;?php</span><br><span class="line">class Base &#123;</span><br><span class="line">public function sayHello() &#123;</span><br><span class="line">echo &apos;Hello &apos;;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">trait SayWorld &#123;</span><br><span class="line">public function sayHello() &#123;</span><br><span class="line">parent::sayHello();</span><br><span class="line">echo &apos;World!&apos;;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">class MyHelloWorld extends Base &#123;</span><br><span class="line">use SayWorld;</span><br><span class="line">&#125;</span><br><span class="line">$o = new MyHelloWorld();</span><br><span class="line">$o-&gt;sayHello();</span><br><span class="line">?&gt;</span><br><span class="line"></span><br><span class="line">//method</span><br><span class="line">&lt;?php</span><br><span class="line">function test() &#123;</span><br><span class="line">echo &apos;函数名为：&apos; . __METHOD__ ;</span><br><span class="line">&#125;</span><br><span class="line">test();</span><br><span class="line">?&gt;</span><br><span class="line"></span><br><span class="line">//namespace</span><br><span class="line">&lt;?php</span><br><span class="line">namespace MyProject;</span><br><span class="line">echo &apos;命名空间为：&quot;&apos;, __NAMESPACE__, &apos;&quot;&apos;; // 输出 &quot;MyProject&quot;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="10-命名空间"><a href="#10-命名空间" class="headerlink" title="10.命名空间"></a>10.命名空间</h2><blockquote>
-<p><strong>非限定名称</strong>，或不包含前缀的类名称，例如 $a=new foo(); 或 foo::staticmethod();。如果当前命名空间是 currentnamespace，foo 将被解析为 currentnamespace\foo。如果使用 foo 的代码是全局的，不包含在任何命名空间中的代码，则 foo 会被解析为foo。 警告：如果命名空间中的函数或常量未定义，则该非限定的函数名称或常量名称会被解析为全局函数名称或常量名称。</p>
-</blockquote>
-<blockquote>
-<p><strong>限定名称**</strong>,或包含前缀的名称，例如 $a = new subnamespace\foo(); 或 subnamespace\foo::staticmethod();。如果当前的命名空间是 currentnamespace，则 foo 会被解析为 currentnamespace\subnamespace\foo。如果使用 foo 的代码是全局的，不包含在任何命名空间中的代码，foo 会被解析为subnamespace\foo。</p>
-</blockquote>
-<blockquote>
-<p><strong>完全限定名称</strong>，或包含了全局前缀操作符的名称，例如， $a = new \currentnamespace\foo(); 或 \currentnamespace\foo::staticmethod();。在这种情况下，foo 总是被解析为代码中的文字名(literal name)currentnamespace\foo。</p>
-</blockquote>
-<h2 id="持续更新…"><a href="#持续更新…" class="headerlink" title="持续更新…"></a>持续更新…</h2>
+        <h2 id="1-变量"><a href="#1-变量" class="headerlink" title="1. 变量"></a>1. 变量</h2>
+        
+          <a class="article-more-a" href="/2019/01/14/PHP笔记/#more">more >></a>
+        
       
 
       
@@ -924,7 +820,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/01/14/PHP学习笔记/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/01/14/PHP笔记/">展开全文 >></a>
         </p>
       
 
@@ -1047,15 +943,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">php</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1063,7 +959,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
               <li class="article-tag-list-item">
