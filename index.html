@@ -202,7 +202,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java编程思想/">java编程思想</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内部类/">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态代理/">动态代理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字符串/">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作符/">操作符</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/记/">记</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/">-ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java编程思想/">java编程思想</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内部类/">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态代理/">动态代理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字符串/">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作符/">操作符</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/记/">记</a></li></ul>
                     </div>
                 </section>
                 
@@ -284,6 +284,80 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-安装ElasticSearch_head插件" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/01/28/安装ElasticSearch_head插件/" class="article-date">
+      <time datetime="2019-01-28T15:56:21.000Z" itemprop="datePublished">2019-01-28</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/28/安装ElasticSearch_head插件/">安装ElasticSearch_head插件</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>ElasticSearch安装Head插件</p>
+<h2 id="安装ElasticSearch"><a href="#安装ElasticSearch" class="headerlink" title="安装ElasticSearch"></a>安装ElasticSearch</h2><h2 id="安装node"><a href="#安装node" class="headerlink" title="安装node"></a>安装node</h2><h2 id="安装grunt"><a href="#安装grunt" class="headerlink" title="安装grunt"></a>安装grunt</h2><p>grunt是一个很方便的构建工具，可以进行打包压缩、测试、执行等等的工作，5.0里的head插件就是通过grunt启动的。因此需要安装grunt：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g grunt-cli</span><br></pre></td></tr></table></figure></p>
+<p>-g代表全局安装。安装路径为C:\Users\yourname\AppData\Roaming\npm，并且自动加入PATH变量。安装完成后检查一下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grunt -version</span><br></pre></td></tr></table></figure></p>
+<h2 id="下载elastichsearch-head插件"><a href="#下载elastichsearch-head插件" class="headerlink" title="下载elastichsearch-head插件"></a>下载elastichsearch-head插件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone git://github.com/mobz/elasticsearch-head.git</span><br></pre></td></tr></table></figure>
+<h2 id="修改head源码"><a href="#修改head源码" class="headerlink" title="修改head源码"></a>修改head源码</h2><p>由于head的代码还是2.6版本的，直接执行有很多限制，比如无法跨机器访问。因此需要用户修改两个地方：<br>目录：head/Gruntfile.js：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">connect: &#123;</span><br><span class="line">    server: &#123;</span><br><span class="line">        options: &#123;</span><br><span class="line">            port: 9100,</span><br><span class="line">            hostname: &apos;*&apos;,</span><br><span class="line">            base: &apos;.&apos;,</span><br><span class="line">            keepalive: true</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>增加hostname属性，设置为*</p>
+<h3 id="修改链接地址"><a href="#修改链接地址" class="headerlink" title="修改链接地址"></a>修改链接地址</h3><p>目录：head/_site/app.js<br>修改head的连接地址:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.base_uri = this.config.base_uri || this.prefs.get(&quot;app-base_uri&quot;) || &quot;http://localhost:9200&quot;;</span><br></pre></td></tr></table></figure></p>
+<p>把localhost修改成你es的服务器地址，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.base_uri = this.config.base_uri || this.prefs.get(&quot;app-base_uri&quot;) || &quot;http://10.10.10.10:9200&quot;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="运行head"><a href="#运行head" class="headerlink" title="运行head"></a>运行head</h2><h3 id="修改elasticsearch的参数"><a href="#修改elasticsearch的参数" class="headerlink" title="修改elasticsearch的参数"></a>修改elasticsearch的参数</h3><p>修改一下es使用的参数。编辑config/elasticsearch.yml：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># 换个集群的名字，免得跟别人的集群混在一起</span><br><span class="line">cluster.name: es-5.0-test</span><br><span class="line"></span><br><span class="line"># 换个节点名字</span><br><span class="line">node.name: node-101</span><br><span class="line"></span><br><span class="line"># 修改一下ES的监听地址，这样别的机器也可以访问</span><br><span class="line">network.host: 0.0.0.0</span><br><span class="line"></span><br><span class="line"># 默认的就好</span><br><span class="line">http.port: 9200</span><br><span class="line"></span><br><span class="line"># 增加新的参数，这样head插件可以访问es</span><br><span class="line">http.cors.enabled: true</span><br><span class="line">http.cors.allow-origin: &quot;*&quot;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>设置参数的时候:后面要有空格！</p>
+</blockquote>
+<h3 id="开启ES-5-6-0："><a href="#开启ES-5-6-0：" class="headerlink" title="开启ES-5.6.0："></a>开启ES-5.6.0：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">G:\background\elasticsearch-5.6.0\bin\elasticsearch.bat</span><br></pre></td></tr></table></figure>
+<h3 id="在head源码目录中，执行npm-install-下载的包："><a href="#在head源码目录中，执行npm-install-下载的包：" class="headerlink" title="在head源码目录中，执行npm install 下载的包："></a>在head源码目录中，执行npm install 下载的包：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<h2 id="在head源代码目录下启动nodejs："><a href="#在head源代码目录下启动nodejs：" class="headerlink" title="在head源代码目录下启动nodejs："></a>在head源代码目录下启动nodejs：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grunt server</span><br></pre></td></tr></table></figure>
+<h3 id="访问-http-localhost-9100"><a href="#访问-http-localhost-9100" class="headerlink" title="访问:http://localhost:9100"></a>访问:<a href="http://localhost:9100" target="_blank" rel="noopener">http://localhost:9100</a></h3><img src="/2019/01/28/安装ElasticSearch_head插件/访问成功.jpg">
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ElasticSearch/">-ElasticSearch</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-SpringBoot整合ElasticSearch" class="article article-type-post" itemscope="" itemprop="blogPost">
   
@@ -843,70 +917,6 @@
       
         <p class="article-more-link">
           <a href="/2019/01/15/第三章-操作符/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-记一次防止渗透的措施" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/01/14/记一次防止渗透的措施/" class="article-date">
-      <time datetime="2019-01-14T14:47:28.000Z" itemprop="datePublished">2019-01-14</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/14/记一次防止渗透的措施/">记一次防止渗透的措施</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><strong>在后端做文件上传的格式校验时,不能只对Content-Type做校验</strong><br>
-          
-      
-    </p></div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/记/">记</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2019/01/14/记一次防止渗透的措施/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
