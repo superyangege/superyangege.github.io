@@ -105,9 +105,9 @@
     
     
     <entry>
-      <title>spring相关</title>
-      <link href="/2019/01/19/spring%E7%9B%B8%E5%85%B3/"/>
-      <url>/2019/01/19/spring%E7%9B%B8%E5%85%B3/</url>
+      <title>Spring相关</title>
+      <link href="/2019/01/19/Spring%E7%9B%B8%E5%85%B3/"/>
+      <url>/2019/01/19/Spring%E7%9B%B8%E5%85%B3/</url>
       
         <content type="html"><![CDATA[<h2 id="IOC-DI"><a href="#IOC-DI" class="headerlink" title="IOC/DI"></a>IOC/DI</h2><a id="more"></a><h3 id="1-概念及原理"><a href="#1-概念及原理" class="headerlink" title="1. 概念及原理"></a>1. 概念及原理</h3><blockquote><p>IOC: Inversion of Control(控制反转)是一种设计思想,利用了工厂模式。对象及其依赖对象的创建及维护都不需要在应用程序中实现，将其交给IOC容器去管理。<strong>传统的开发中，我们自己在对象内部创建依赖对象并注入当前对象，完成依赖关系的维护；对于IOC而言，强调将主动变为被动，由IOC容器来负责依赖对象的创建和查找，由IOC容器来进行注入组合对象</strong>，只需要在相关的配置文件中维护对象之间的依赖关系即可。</p></blockquote><blockquote><p>DI: Dependency Injection，即“依赖注入”。其实IOC和DI本就是同一个概念的两种不同的表述，<strong>应用程序依赖容器提供的外部对象，容器将其依赖的外部资源在运行期注入到应用程序中；某个对象被调用时，其所依赖的对象由容器注入</strong>。</p></blockquote><h2 id="2-AOP"><a href="#2-AOP" class="headerlink" title="2.AOP"></a>2.AOP</h2><blockquote><p>AOP利用一种称为“<strong>横切</strong>”的技术，剖解开封装的对象内部，<strong>将那些影响多个类的公共行为封装到一个可重用模块，并将其名为切面(Aspect)</strong>。所谓“方面”，简单地说，就是将那些与业务无关，却为业务模块所共同调用的逻辑封装起来的部分。以便于减少系统的重复代码，降低模块间的耦合度，并有利于系统维护。<br>　　使用“横切”技术，AOP把软件系统分为两个部分：<strong>核心关注点（业务逻辑）和横切关注点（通用逻辑，即方面）。业务处理的主要流程是核心关注点，与之关系不大的部分是横切关注点。</strong>横切关注点的特点是，其经常发生在核心关注点的多处，而各处都基本相似。比如权限认证、日志、事务处理，debug管理，性能检测等。AOP的作用在于分离系统中的各种关注点，将核心关注点和横切关注点分离开来。</p></blockquote><p>　　 </p>]]></content>
       
@@ -115,7 +115,7 @@
       
         <tags>
             
-            <tag> spring </tag>
+            <tag> Spring </tag>
             
         </tags>
       
@@ -233,7 +233,7 @@
       
         <tags>
             
-            <tag> php </tag>
+            <tag> PHP </tag>
             
         </tags>
       
