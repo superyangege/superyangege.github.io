@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="连接路径：path.join([path1][, path2][, …])path.join()方法可以连接任意多个路径字符串。要连接的多个路径可做为参数传入。path.join()方法在接边路径的同时也会对路径进行规范化。例如：123456789var path = require(&amp;apos;path&amp;apos;); //合法的字符串连接 path.join(&amp;apos;/foo&amp;apos;,">
-<meta name="keywords" content="java,spring,springboot,nodejs,php">
+<meta name="description" content="Nodejs中domain的作用">
+<meta name="keywords" content="NodeJs">
 <meta property="og:type" content="article">
-<meta property="og:title" content="炎の博客">
-<meta property="og:url" content="http://yoursite.com/2019/01/29/temp/index.html">
+<meta property="og:title" content="NodeJs domain的作用">
+<meta property="og:url" content="http://yoursite.com/2019/01/29/NodeJs-domain的作用/index.html">
 <meta property="og:site_name" content="炎の博客">
-<meta property="og:description" content="连接路径：path.join([path1][, path2][, …])path.join()方法可以连接任意多个路径字符串。要连接的多个路径可做为参数传入。path.join()方法在接边路径的同时也会对路径进行规范化。例如：123456789var path = require(&amp;apos;path&amp;apos;); //合法的字符串连接 path.join(&amp;apos;/foo&amp;apos;,">
+<meta property="og:description" content="Nodejs中domain的作用">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-29T08:03:17.737Z">
+<meta property="og:updated_time" content="2019-01-29T12:10:30.949Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="炎の博客">
-<meta name="twitter:description" content="连接路径：path.join([path1][, path2][, …])path.join()方法可以连接任意多个路径字符串。要连接的多个路径可做为参数传入。path.join()方法在接边路径的同时也会对路径进行规范化。例如：123456789var path = require(&amp;apos;path&amp;apos;); //合法的字符串连接 path.join(&amp;apos;/foo&amp;apos;,">
+<meta name="twitter:title" content="NodeJs domain的作用">
+<meta name="twitter:description" content="Nodejs中domain的作用">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>炎の博客</title>
+<title>NodeJs domain的作用 | 炎の博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -198,7 +198,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NodeJs/">NodeJs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java编程思想/">java编程思想</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内部类/">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态代理/">动态代理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字符串/">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作符/">操作符</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/记/">记</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NodeJs/">NodeJs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Yii/">Yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java编程思想/">java编程思想</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内部类/">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态代理/">动态代理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字符串/">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作符/">操作符</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/记/">记</a></li></ul>
                     </div>
                 </section>
                 
@@ -279,11 +279,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-temp" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-NodeJs-domain的作用" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/01/29/temp/" class="article-date">
-      <time datetime="2019-01-29T08:03:03.136Z" itemprop="datePublished">2019-01-29</time>
+      <a href="/2019/01/29/NodeJs-domain的作用/" class="article-date">
+      <time datetime="2019-01-29T12:09:20.000Z" itemprop="datePublished">2019-01-29</time>
 </a>
 
 
@@ -294,14 +294,37 @@
       <input type="hidden" class="isFancy">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      NodeJs domain的作用
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NodeJs/">NodeJs</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="连接路径：path-join-path1-path2-…"><a href="#连接路径：path-join-path1-path2-…" class="headerlink" title="连接路径：path.join([path1][, path2][, …])"></a>连接路径：path.join([path1][, path2][, …])</h2><p>path.join()方法可以连接任意多个路径字符串。要连接的多个路径可做为参数传入。<br>path.join()方法在接边路径的同时也会对路径进行规范化。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var path = require(&apos;path&apos;); </span><br><span class="line">//合法的字符串连接 </span><br><span class="line">path.join(&apos;/foo&apos;, &apos;bar&apos;, &apos;baz/asdf&apos;, &apos;quux&apos;, &apos;..&apos;) </span><br><span class="line">// 连接后 </span><br><span class="line">&apos;/foo/bar/baz/asdf&apos; </span><br><span class="line"></span><br><span class="line">//不合法的字符串将抛出异常 </span><br><span class="line">path.join(&apos;foo&apos;, &#123;&#125;, &apos;bar&apos;) </span><br><span class="line">// 抛出的异常 TypeError: Arguments to path.join must be strings&apos;</span><br></pre></td></tr></table></figure></p>
-<h2 id="路径解析：path-resolve-from-…-to"><a href="#路径解析：path-resolve-from-…-to" class="headerlink" title="路径解析：path.resolve([from …], to)"></a>路径解析：path.resolve([from …], to)</h2><p>path.resolve()方法可以将多个路径解析为一个规范化的绝对路径。其处理方式类似于对这些路径逐一进行cd操作，与cd操作不同的是，这引起路径可以是文件，并且可不必实际存在（resolve()方法不会利用底层的文件系统判断路径是否存在，而只是进行路径字符串操作）。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path.resolve(&apos;foo/bar&apos;, &apos;/tmp/file/&apos;, &apos;..&apos;, &apos;a/../subfile&apos;)</span><br></pre></td></tr></table></figure></p>
-<p>相当于<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd foo/bar</span><br><span class="line">cd /tmp/file/</span><br><span class="line">cd ..</span><br><span class="line">cd a/../subfile</span><br><span class="line">pwd</span><br></pre></td></tr></table></figure></p>
-<p>例子:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">path.resolve(&apos;/foo/bar&apos;, &apos;./baz&apos;) </span><br><span class="line">// 输出结果为 </span><br><span class="line">&apos;/foo/bar/baz&apos; </span><br><span class="line">path.resolve(&apos;/foo/bar&apos;, &apos;/tmp/file/&apos;) </span><br><span class="line">// 输出结果为 </span><br><span class="line">&apos;/tmp/file&apos; </span><br><span class="line"></span><br><span class="line">path.resolve(&apos;wwwroot&apos;, &apos;static_files/png/&apos;, &apos;../gif/image.gif&apos;) </span><br><span class="line">// 当前的工作路径是 /home/itbilu/node，则输出结果为 </span><br><span class="line">&apos;/home/itbilu/node/wwwroot/static_files/gif/image.gif&apos;</span><br></pre></td></tr></table></figure></p>
-<h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const path = require(&apos;path&apos;); </span><br><span class="line">let myPath = path.join(__dirname,&apos;/img/so&apos;); </span><br><span class="line">let myPath2 = path.join(__dirname,&apos;./img/so&apos;); </span><br><span class="line">let myPath3 = path.resolve(__dirname,&apos;/img/so&apos;); </span><br><span class="line">let myPath4 = path.resolve(__dirname,&apos;./img/so&apos;); </span><br><span class="line">console.log(__dirname); //D:\myProgram\test </span><br><span class="line">console.log(myPath); //D:\myProgram\test\img\so </span><br><span class="line">console.log(myPath2); //D:\myProgram\test\img\so </span><br><span class="line">console.log(myPath3); //D:\img\so&lt;br&gt; </span><br><span class="line">console.log(myPath4); //D:\myProgram\test\img\so</span><br></pre></td></tr></table></figure>
+        <p>Domain 可以简化异步代码的异常处理，可以捕捉处理try catch无法捕捉的异常。</p>
+<p>引入 Domain 模块 语法格式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var domain = require(&quot;domain&quot;)</span><br></pre></td></tr></table></figure></p>
+<p>把处理多个不同的IO的操作作为一个组。注册事件和回调到domain，当发生一个错误事件或抛出一个错误时，domain对象会被通知，不会丢失上下文环境，也<strong>不导致程序错误立即退出，与process.on(‘uncaughtException’)不同。</strong></p>
+<h2 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">domain.run(function)</span><br><span class="line">//在域的上下文运行提供的函数，隐式的绑定了所有的事件分发器，计时器和底层请求。</span><br><span class="line"></span><br><span class="line">domain.add(emitter)</span><br><span class="line">//显式的增加事件</span><br><span class="line">domain.remove(emitter)</span><br><span class="line">//删除事件</span><br><span class="line"></span><br><span class="line">domain.create()</span><br><span class="line">//返回一个domain对象。</span><br><span class="line"></span><br><span class="line">domain.exit()</span><br><span class="line">//退出当前的domain，切换到不同的链的异步调用的上下文中。对应domain.enter()。</span><br><span class="line"></span><br><span class="line">domain.dispose()</span><br><span class="line">//释放一个domain对象，让node进程回收这部分资源。</span><br></pre></td></tr></table></figure>
+<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">var EventEmitter = require(&quot;events&quot;).EventEmitter;</span><br><span class="line">var domain = require(&quot;domain&quot;);</span><br><span class="line"></span><br><span class="line">var emitter1 = new EventEmitter();</span><br><span class="line"></span><br><span class="line">// 创建域</span><br><span class="line">var domain1 = domain.create();</span><br><span class="line"></span><br><span class="line">domain1.on(&apos;error&apos;, function(err)&#123;</span><br><span class="line">   console.log(&quot;domain1 处理这个错误 (&quot;+err.message+&quot;)&quot;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 显式绑定</span><br><span class="line">domain1.add(emitter1);</span><br><span class="line"></span><br><span class="line">emitter1.on(&apos;error&apos;,function(err)&#123;</span><br><span class="line">   console.log(&quot;监听器处理此错误 (&quot;+err.message+&quot;)&quot;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">emitter1.emit(&apos;error&apos;,new Error(&apos;通过监听器来处理&apos;));</span><br><span class="line"></span><br><span class="line">emitter1.removeAllListeners(&apos;error&apos;);</span><br><span class="line"></span><br><span class="line">emitter1.emit(&apos;error&apos;,new Error(&apos;通过 domain1 处理&apos;));</span><br><span class="line"></span><br><span class="line">var domain2 = domain.create();</span><br><span class="line"></span><br><span class="line">domain2.on(&apos;error&apos;, function(err)&#123;</span><br><span class="line">   console.log(&quot;domain2 处理这个错误 (&quot;+err.message+&quot;)&quot;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 隐式绑定</span><br><span class="line">domain2.run(function()&#123;</span><br><span class="line">   var emitter2 = new EventEmitter();</span><br><span class="line">   emitter2.emit(&apos;error&apos;,new Error(&apos;通过 domain2 处理&apos;));   </span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">domain1.remove(emitter1);</span><br><span class="line">emitter1.emit(&apos;error&apos;, new Error(&apos;转换为异常，系统将崩溃!&apos;));</span><br></pre></td></tr></table></figure>
+<p><strong>Domain的关键就在于错误会传到domain而不会引发系统崩溃</strong></p>
 
       
     </div>
@@ -310,13 +333,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2019/01/29/temp/"></a></p>
+        <p><span>本文标题:</span><a href="/2019/01/29/NodeJs-domain的作用/">NodeJs domain的作用</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">LinJiayan</a></p>
-        <p><span>发布时间:</span>2019-01-29, 16:03:03</p>
-        <p><span>最后更新:</span>2019-01-29, 16:03:17</p>
+        <p><span>发布时间:</span>2019-01-29, 20:09:20</p>
+        <p><span>最后更新:</span>2019-01-29, 20:10:30</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/01/29/temp/" title="">http://yoursite.com/2019/01/29/temp/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/01/29/temp/　　作者: LinJiayan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2019/01/29/NodeJs-domain的作用/" title="NodeJs domain的作用">http://yoursite.com/2019/01/29/NodeJs-domain的作用/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/01/29/NodeJs-domain的作用/　　作者: LinJiayan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -329,15 +352,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2019/01/29/NodeJs-path的join和resolve的区别/">
-                    NodeJs path的join和resolve的区别
+                <a href="/2019/01/29/Yii操作Mysql/">
+                    Yii操作Mysql
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2019/01/28/安装ElasticSearch_head插件/">
-                    安装ElasticSearch_head插件
+                <a href="/2019/01/29/NodeJs-path的join和resolve的区别/">
+                    NodeJs path的join和resolve的区别
                 </a>
             </div>
         
@@ -349,7 +372,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#连接路径：path-join-path1-path2-…"><span class="toc-number">1.</span> <span class="toc-text">连接路径：path.join([path1][, path2][, …])</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#路径解析：path-resolve-from-…-to"><span class="toc-number">2.</span> <span class="toc-text">路径解析：path.resolve([from …], to)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对比"><span class="toc-number">3.</span> <span class="toc-text">对比</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#常用方法"><span class="toc-number">1.</span> <span class="toc-text">常用方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Demo"><span class="toc-number">2.</span> <span class="toc-text">Demo</span></a></li></ol>
         
     </div>
     <style>
@@ -385,7 +408,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"　| 炎の博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"NodeJs domain的作用　| 炎の博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -405,7 +428,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2019/01/29/NodeJs-path的join和resolve的区别/" title="上一篇: NodeJs path的join和resolve的区别">
+            <a href="/2019/01/29/Yii操作Mysql/" title="上一篇: Yii操作Mysql">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -413,13 +436,13 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2019/01/28/安装ElasticSearch_head插件/" title="下一篇: 安装ElasticSearch_head插件">
+            <a href="/2019/01/29/NodeJs-path的join和resolve的区别/" title="下一篇: NodeJs path的join和resolve的区别">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/01/29/NodeJs-path的join和resolve的区别/">NodeJs path的join和resolve的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/29/temp/">temp</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/28/安装ElasticSearch_head插件/">安装ElasticSearch_head插件</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/27/SpringBoot整合ElasticSearch/">SpringBoot整合ElasticSearch</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/26/PHP-字符串/">PHP_字符串</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/25/ElasticSearch笔记/">ElasticSearch笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/java实现动态代理/">java实现动态代理</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/Spring相关/">Spring相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/17/第十章-内部类/">第十章 内部类</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/16/git常用命令/">git常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/15/Java基础零散笔记/">Java基础笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/15/第三章-操作符/">第三章 操作符</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/14/记一次防止渗透的措施/">记一次防止渗透的措施</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/14/PHP笔记/">PHP笔记</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/01/29/Yii操作Mysql/">Yii操作Mysql</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/29/NodeJs-domain的作用/">NodeJs domain的作用</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/29/NodeJs-path的join和resolve的区别/">NodeJs path的join和resolve的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/28/安装ElasticSearch_head插件/">安装ElasticSearch_head插件</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/27/SpringBoot整合ElasticSearch/">SpringBoot整合ElasticSearch</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/26/PHP-字符串/">PHP_字符串</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/25/ElasticSearch笔记/">ElasticSearch笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/java实现动态代理/">java实现动态代理</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/Spring相关/">Spring相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/17/第十章-内部类/">第十章 内部类</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/16/git常用命令/">git常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/15/Java基础零散笔记/">Java基础笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/15/第三章-操作符/">第三章 操作符</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/14/记一次防止渗透的措施/">记一次防止渗透的措施</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/14/PHP笔记/">PHP笔记</a></li></ul>
 
 
 
