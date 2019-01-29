@@ -202,7 +202,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java编程思想/">java编程思想</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内部类/">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态代理/">动态代理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字符串/">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作符/">操作符</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/记/">记</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NodeJs/">NodeJs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java编程思想/">java编程思想</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内部类/">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态代理/">动态代理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字符串/">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作符/">操作符</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/记/">记</a></li></ul>
                     </div>
                 </section>
                 
@@ -284,6 +284,119 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-NodeJs-path的join和resolve的区别" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/01/29/NodeJs-path的join和resolve的区别/" class="article-date">
+      <time datetime="2019-01-29T08:03:43.000Z" itemprop="datePublished">2019-01-29</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/29/NodeJs-path的join和resolve的区别/">NodeJs path的join和resolve的区别</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              NodeJs 中join和resolve方法的区别解析
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NodeJs/">NodeJs</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2019/01/29/NodeJs-path的join和resolve的区别/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-temp" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/01/29/temp/" class="article-date">
+      <time datetime="2019-01-29T08:03:03.136Z" itemprop="datePublished">2019-01-29</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="连接路径：path-join-path1-path2-…"><a href="#连接路径：path-join-path1-path2-…" class="headerlink" title="连接路径：path.join([path1][, path2][, …])"></a>连接路径：path.join([path1][, path2][, …])</h2><p>path.join()方法可以连接任意多个路径字符串。要连接的多个路径可做为参数传入。<br>path.join()方法在接边路径的同时也会对路径进行规范化。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var path = require(&apos;path&apos;); </span><br><span class="line">//合法的字符串连接 </span><br><span class="line">path.join(&apos;/foo&apos;, &apos;bar&apos;, &apos;baz/asdf&apos;, &apos;quux&apos;, &apos;..&apos;) </span><br><span class="line">// 连接后 </span><br><span class="line">&apos;/foo/bar/baz/asdf&apos; </span><br><span class="line"></span><br><span class="line">//不合法的字符串将抛出异常 </span><br><span class="line">path.join(&apos;foo&apos;, &#123;&#125;, &apos;bar&apos;) </span><br><span class="line">// 抛出的异常 TypeError: Arguments to path.join must be strings&apos;</span><br></pre></td></tr></table></figure></p>
+<h2 id="路径解析：path-resolve-from-…-to"><a href="#路径解析：path-resolve-from-…-to" class="headerlink" title="路径解析：path.resolve([from …], to)"></a>路径解析：path.resolve([from …], to)</h2><p>path.resolve()方法可以将多个路径解析为一个规范化的绝对路径。其处理方式类似于对这些路径逐一进行cd操作，与cd操作不同的是，这引起路径可以是文件，并且可不必实际存在（resolve()方法不会利用底层的文件系统判断路径是否存在，而只是进行路径字符串操作）。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path.resolve(&apos;foo/bar&apos;, &apos;/tmp/file/&apos;, &apos;..&apos;, &apos;a/../subfile&apos;)</span><br></pre></td></tr></table></figure></p>
+<p>相当于<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd foo/bar</span><br><span class="line">cd /tmp/file/</span><br><span class="line">cd ..</span><br><span class="line">cd a/../subfile</span><br><span class="line">pwd</span><br></pre></td></tr></table></figure></p>
+<p>例子:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">path.resolve(&apos;/foo/bar&apos;, &apos;./baz&apos;) </span><br><span class="line">// 输出结果为 </span><br><span class="line">&apos;/foo/bar/baz&apos; </span><br><span class="line">path.resolve(&apos;/foo/bar&apos;, &apos;/tmp/file/&apos;) </span><br><span class="line">// 输出结果为 </span><br><span class="line">&apos;/tmp/file&apos; </span><br><span class="line"></span><br><span class="line">path.resolve(&apos;wwwroot&apos;, &apos;static_files/png/&apos;, &apos;../gif/image.gif&apos;) </span><br><span class="line">// 当前的工作路径是 /home/itbilu/node，则输出结果为 </span><br><span class="line">&apos;/home/itbilu/node/wwwroot/static_files/gif/image.gif&apos;</span><br></pre></td></tr></table></figure></p>
+<h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const path = require(&apos;path&apos;); </span><br><span class="line">let myPath = path.join(__dirname,&apos;/img/so&apos;); </span><br><span class="line">let myPath2 = path.join(__dirname,&apos;./img/so&apos;); </span><br><span class="line">let myPath3 = path.resolve(__dirname,&apos;/img/so&apos;); </span><br><span class="line">let myPath4 = path.resolve(__dirname,&apos;./img/so&apos;); </span><br><span class="line">console.log(__dirname); //D:\myProgram\test </span><br><span class="line">console.log(myPath); //D:\myProgram\test\img\so </span><br><span class="line">console.log(myPath2); //D:\myProgram\test\img\so </span><br><span class="line">console.log(myPath3); //D:\img\so&lt;br&gt; </span><br><span class="line">console.log(myPath4); //D:\myProgram\test\img\so</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-安装ElasticSearch_head插件" class="article article-type-post" itemscope="" itemprop="blogPost">
   
@@ -779,134 +892,6 @@
       
         <p class="article-more-link">
           <a href="/2019/01/16/git常用命令/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Java基础零散笔记" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/01/15/Java基础零散笔记/" class="article-date">
-      <time datetime="2019-01-15T07:55:12.000Z" itemprop="datePublished">2019-01-15</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/15/Java基础零散笔记/">Java基础笔记</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>1.URL u =new URL(“<a href="http://www.123.com&quot;);。如果www.123.com不存在，则返回______。" target="_blank" rel="noopener">http://www.123.com&quot;);。如果www.123.com不存在，则返回______。</a><br>
-          
-      
-    </p></div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2019/01/15/Java基础零散笔记/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-第三章-操作符" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/01/15/第三章-操作符/" class="article-date">
-      <time datetime="2019-01-15T02:51:54.000Z" itemprop="datePublished">2019-01-15</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/15/第三章-操作符/">第三章 操作符</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="逻辑操作符"><a href="#逻辑操作符" class="headerlink" title="逻辑操作符:"></a>逻辑操作符:</h2>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java编程思想/">java编程思想</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/操作符/">操作符</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2019/01/15/第三章-操作符/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
