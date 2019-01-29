@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="LinJiayan">
+
+
+
+<meta name="description" content="1. 变量">
+<meta name="keywords" content="PHP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP笔记">
+<meta property="og:url" content="http://yoursite.com/2019/01/14/PHP笔记/index.html">
+<meta property="og:site_name" content="炎の博客">
+<meta property="og:description" content="1. 变量">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-01-28T16:19:30.306Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP笔记">
+<meta name="twitter:description" content="1. 变量">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="炎の博客" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>PHP笔记 | 炎の博客</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="https://avatars3.githubusercontent.com/u/23213720?s=460&amp;v=4" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">LinJiayan</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">不积跬步无以至千里</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false">
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class="no-result">No results found <i class="fa fa-spinner fa-pulse"></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:1020985033@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" href="/sina weibo" title="新浪微博"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 知乎" href="/zhihu" title="知乎"></a>
+                            
+                                <a class="fa 网易云音乐" href="/netease" title="网易云音乐"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NodeJs/">NodeJs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Yii/">Yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java编程思想/">java编程思想</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内部类/">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态代理/">动态代理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字符串/">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作符/">操作符</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/记/">记</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">广工大三dog,很高兴认识你~</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">LinJiayan</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="https://avatars3.githubusercontent.com/u/23213720?s=460&amp;v=4" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">LinJiayan</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">不积跬步无以至千里</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:1020985033@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="/sina weibo" title="新浪微博"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 知乎" target="_blank" href="/zhihu" title="知乎"></a>
+                            
+                                <a class="fa 网易云音乐" target="_blank" href="/netease" title="网易云音乐"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
+</nav>
+      <div class="body-wrap"><article id="post-PHP笔记" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/01/14/PHP笔记/" class="article-date">
+      <time datetime="2019-01-14T12:45:53.000Z" itemprop="datePublished">2019-01-14</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      PHP笔记
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="1-变量"><a href="#1-变量" class="headerlink" title="1. 变量"></a>1. 变量</h2><a id="more"></a>
+<p>变量以\$符号开始，后面跟着变量的名称<br>变量名必须以字母或者下划线字符开始<br>变量名只能包含字母数字字符以及下划线（A-z、0-9 和 _ ）<br>变量名不能包含空格<br>变量名是区分大小写的（$y 和 $Y 是两个不同的变量）</p>
+<h3 id="作用域："><a href="#作用域：" class="headerlink" title="作用域："></a>作用域：</h3><ul>
+<li>local</li>
+<li>global(global 关键字用于函数内访问全局变量)</li>
+<li>static(希望某个局部变量在方法执行完后不删除,则使用static)</li>
+<li>parameter(参数是在参数列表中声明的，作为函数声明的一部分：)</li>
+</ul>
+<h2 id="2-echo-和-print"><a href="#2-echo-和-print" class="headerlink" title="2. echo 和 print"></a>2. echo 和 print</h2><p>echo 和 print 区别:</p>
+<blockquote>
+<p>echo - 可以输出一个或多个字符串(echo “这是一个”, “字符串，”, “使用了”, “多个”, “参数。”;)<br>print - 只允许输出一个字符串，返回值总为 1<br>echo 输出的速度比 print 快， echo 没有返回值，print有返回值1。</p>
+</blockquote>
+<h2 id="3-EOF"><a href="#3-EOF" class="headerlink" title="3. EOF"></a>3. EOF</h2><blockquote>
+<p>PHP EOF(heredoc)是一种在命令行shell（如sh、csh、ksh、bash、PowerShell和zsh）和程序语言（像Perl、PHP、Python和Ruby）里定义一个字串的方法。</p>
+</blockquote>
+<ol>
+<li>必须后接分号，否则编译通不过。</li>
+<li>EOF 可以用任意其它字符代替，只需保证结束标识与开始标识一致。</li>
+<li>结束标识必须顶格独自占一行(即必须从行首开始，前后不能衔接任何空白和字符)。</li>
+<li>开始标识可以不带引号或带单双引号，不带引号与带双引号效果一致，解释内嵌的变量和转义符号，带单引号则不解释内嵌的变量和转义符号。</li>
+<li>当内容需要内嵌引号（单引号或双引号）时，不需要加转义符，本身对单双引号转义，此处相当与q和qq的用法。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo &lt;&lt;&lt;EOF</span><br><span class="line">    &lt;h1&gt;我的第一个标题&lt;/h1&gt;</span><br><span class="line">    &lt;p&gt;我的第一个段落。&lt;/p&gt;</span><br><span class="line">EOF;</span><br><span class="line">// 结束需要独立一行且前后不能空格</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p> <strong>EOF 的作用就是按照原样，包括换行格式什么的，输出在其内部的东西；在 PHP 定界符 EOF 中的任何特殊字符都不需要转义；</strong></p>
+<h2 id="4-数据类型"><a href="#4-数据类型" class="headerlink" title="4.数据类型"></a>4.数据类型</h2><p>String（字符串）, Integer（整型）, Float（浮点型）, Boolean（布尔型）, Array（数组）, Object（对象）, NULL（空值）。<br><strong>var_dump() 函数返回变量的数据类型和值：</strong></p>
+<p>PHP 对象:<br>对象数据类型也可以用于存储数据。</p>
+<blockquote>
+<p>在 PHP 中，对象必须声明。<br>首先，必须使用class关键字声明类对象。类是可以包含属性和方法的结构。<br>然后在类中定义数据类型，然后在实例化的类中使用数据类型：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class Car</span><br><span class="line">&#123;</span><br><span class="line">  var $color;</span><br><span class="line">  function __construct($color=&quot;green&quot;) &#123;</span><br><span class="line">    $this-&gt;color = $color;</span><br><span class="line">  &#125;</span><br><span class="line">  function what_color() &#123;</span><br><span class="line">    return $this-&gt;color;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>this 就是指向当前对象的指针</p>
+<h2 id="5-常量"><a href="#5-常量" class="headerlink" title="5.常量"></a>5.常量</h2><p>设置常量:</p>
+<pre><code>define(name,value,case_insensitive);
+</code></pre><p>name：必选参数，常量名称，即标志符。<br>value：必选参数，常量的值。<br>case_insensitive ：可选参数，如果设置为TRUE，该常量则大小写不敏感。默认是大小写敏感的。    </p>
+<p><strong>常量是全局的,常量在定义后，默认是全局变量，可以在整个运行的脚本的任何地方使用。</strong>    </p>
+<h2 id="5-字符串"><a href="#5-字符串" class="headerlink" title="5.字符串"></a>5.字符串</h2><p>PHP 并置运算符:</p>
+<blockquote>
+<p>在 PHP 中，只有一个字符串运算符,并置运算符 (.) 用于把两个字符串值连接起来。</p>
+</blockquote>
+<p>strlen() 函数:</p>
+<blockquote>
+<p>获取长度</p>
+</blockquote>
+<p> strpos() 函数:</p>
+<blockquote>
+<p>strpos() 函数用于在字符串内查找一个字符或一段指定的文本。<br>如果在字符串中找到匹配，该函数会返回第一个匹配的字符位置。如果未找到匹配，则返回 FALSE。</p>
+</blockquote>
+<h2 id="6-运算符"><a href="#6-运算符" class="headerlink" title="6.运算符"></a>6.运算符</h2><p> 优先级： &amp;&amp;  &gt;  =  &gt;  and<br> 优先级： ||  &gt;  =  &gt;  or</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$a = 3;</span><br><span class="line">$b = false;</span><br><span class="line">$c = $a or $b;</span><br><span class="line">var_dump($c);          // 这里的 $c 为 int 值3，而不是 boolean 值 true</span><br><span class="line">$d = $a || $b;</span><br><span class="line">var_dump($d);          //这里的 $d 就是 boolean 值 true </span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="7-PHP-数组"><a href="#7-PHP-数组" class="headerlink" title="7.PHP 数组"></a>7.PHP 数组</h2><p>PHP一维数组:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$cars=array(&quot;Volvo&quot;,&quot;BMW&quot;,&quot;Toyota&quot;);</span><br><span class="line">echo &quot;I like &quot; . $cars[0] . &quot;, &quot; . $cars[1] . &quot; and &quot; . $cars[2] . &quot;.&quot;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
+<p>关联数组:相当于键值对形式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$age=array(&quot;Peter&quot;=&gt;&quot;35&quot;,&quot;Ben&quot;=&gt;&quot;37&quot;,&quot;Joe&quot;=&gt;&quot;43&quot;);</span><br><span class="line">echo &quot;Peter is &quot; . $age[&apos;Peter&apos;] . &quot; years old.&quot;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
+<p>多维数组:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$cars = array</span><br><span class="line">(</span><br><span class="line">//二维数组</span><br><span class="line">array(&quot;Volvo&quot;,100,96),</span><br><span class="line">array(&quot;BMW&quot;,60,59),</span><br><span class="line">array(&quot;Toyota&quot;,110,100)</span><br><span class="line">);</span><br><span class="line">?&gt;</span><br><span class="line">//多维数组</span><br><span class="line">$sites = array</span><br><span class="line">(</span><br><span class="line">    &quot;runoob&quot;=&gt;array</span><br><span class="line">    (</span><br><span class="line">        &quot;菜鸟教程&quot;,</span><br><span class="line">        &quot;http://www.runoob.com&quot;</span><br><span class="line">    ),</span><br><span class="line">    &quot;google&quot;=&gt;array</span><br><span class="line">    (</span><br><span class="line">        &quot;Google 搜索&quot;,</span><br><span class="line">        &quot;http://www.google.com&quot;</span><br><span class="line">    ),</span><br><span class="line">    &quot;taobao&quot;=&gt;array</span><br><span class="line">    (</span><br><span class="line">        &quot;淘宝&quot;,</span><br><span class="line">        &quot;http://www.taobao.com&quot;</span><br><span class="line">    )</span><br><span class="line">);</span><br><span class="line">print(&quot;&lt;pre&gt;&quot;); // 格式化输出数组</span><br><span class="line">print_r($sites);</span><br><span class="line">print(&quot;&lt;/pre&gt;&quot;);</span><br></pre></td></tr></table></figure></p>
+<h2 id="8-PHP超级全局变量"><a href="#8-PHP超级全局变量" class="headerlink" title="8.PHP超级全局变量"></a>8.PHP超级全局变量</h2><ul>
+<li>\$GLOBALS</li>
+<li>\$_SERVER</li>
+<li>\$_REQUEST</li>
+<li>\$_POST</li>
+<li>\$_GET</li>
+<li>\$_FILES</li>
+<li>\$_ENV</li>
+<li>\$_COOKIE</li>
+<li>\$_SESSION</li>
+</ul>
+<h2 id="9-魔术常量"><a href="#9-魔术常量" class="headerlink" title="9.魔术常量"></a>9.魔术常量</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo &apos;这是第 &quot; &apos; . __LINE__ . &apos; &quot; 行&apos;;</span><br><span class="line">?&gt;</span><br><span class="line">&lt;?php</span><br><span class="line">echo &apos;该文件位于 &quot; &apos; . __FILE__ . &apos; &quot; &apos;;</span><br><span class="line">?&gt;</span><br><span class="line">&lt;?php</span><br><span class="line">echo &apos;该文件位于 &quot; &apos; . __DIR__ . &apos; &quot; &apos;;</span><br><span class="line">?&gt;</span><br><span class="line">&lt;?php</span><br><span class="line">function test() &#123;</span><br><span class="line">echo &apos;函数名为：&apos; . __FUNCTION__ ;</span><br><span class="line">&#125;</span><br><span class="line">test();</span><br><span class="line">?&gt;</span><br><span class="line">&lt;?php</span><br><span class="line">class test &#123;</span><br><span class="line">function _print() &#123;</span><br><span class="line">echo &apos;类名为：&apos; . __CLASS__ . &quot;&lt;br&gt;&quot;;</span><br><span class="line">echo &apos;函数名为：&apos; . __FUNCTION__ ;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">$t = new test();</span><br><span class="line">$t-&gt;_print();</span><br><span class="line">?&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//trait</span><br><span class="line">&lt;?php</span><br><span class="line">class Base &#123;</span><br><span class="line">public function sayHello() &#123;</span><br><span class="line">echo &apos;Hello &apos;;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">trait SayWorld &#123;</span><br><span class="line">public function sayHello() &#123;</span><br><span class="line">parent::sayHello();</span><br><span class="line">echo &apos;World!&apos;;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">class MyHelloWorld extends Base &#123;</span><br><span class="line">use SayWorld;</span><br><span class="line">&#125;</span><br><span class="line">$o = new MyHelloWorld();</span><br><span class="line">$o-&gt;sayHello();</span><br><span class="line">?&gt;</span><br><span class="line"></span><br><span class="line">//method</span><br><span class="line">&lt;?php</span><br><span class="line">function test() &#123;</span><br><span class="line">echo &apos;函数名为：&apos; . __METHOD__ ;</span><br><span class="line">&#125;</span><br><span class="line">test();</span><br><span class="line">?&gt;</span><br><span class="line"></span><br><span class="line">//namespace</span><br><span class="line">&lt;?php</span><br><span class="line">namespace MyProject;</span><br><span class="line">echo &apos;命名空间为：&quot;&apos;, __NAMESPACE__, &apos;&quot;&apos;; // 输出 &quot;MyProject&quot;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="10-命名空间"><a href="#10-命名空间" class="headerlink" title="10.命名空间"></a>10.命名空间</h2><blockquote>
+<p><strong>非限定名称</strong>，或不包含前缀的类名称，例如 $a=new foo(); 或 foo::staticmethod();。如果当前命名空间是 currentnamespace，foo 将被解析为 currentnamespace\foo。如果使用 foo 的代码是全局的，不包含在任何命名空间中的代码，则 foo 会被解析为foo。 警告：如果命名空间中的函数或常量未定义，则该非限定的函数名称或常量名称会被解析为全局函数名称或常量名称。</p>
+</blockquote>
+<blockquote>
+<p><strong>限定名称**</strong>,或包含前缀的名称，例如 $a = new subnamespace\foo(); 或 subnamespace\foo::staticmethod();。如果当前的命名空间是 currentnamespace，则 foo 会被解析为 currentnamespace\subnamespace\foo。如果使用 foo 的代码是全局的，不包含在任何命名空间中的代码，foo 会被解析为subnamespace\foo。</p>
+</blockquote>
+<blockquote>
+<p><strong>完全限定名称</strong>，或包含了全局前缀操作符的名称，例如， $a = new \currentnamespace\foo(); 或 \currentnamespace\foo::staticmethod();。在这种情况下，foo 总是被解析为代码中的文字名(literal name)currentnamespace\foo。</p>
+</blockquote>
+<h2 id="持续更新…"><a href="#持续更新…" class="headerlink" title="持续更新…"></a>持续更新…</h2>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2019/01/14/PHP笔记/">PHP笔记</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">LinJiayan</a></p>
+        <p><span>发布时间:</span>2019-01-14, 20:45:53</p>
+        <p><span>最后更新:</span>2019-01-29, 00:19:30</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2019/01/14/PHP笔记/" title="PHP笔记">http://yoursite.com/2019/01/14/PHP笔记/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/01/14/PHP笔记/　　作者: LinJiayan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2019/01/14/记一次防止渗透的措施/">
+                    记一次防止渗透的措施
+                </a>
+            </div>
+        
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-变量"><span class="toc-number">1.</span> <span class="toc-text">1. 变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#作用域："><span class="toc-number">1.1.</span> <span class="toc-text">作用域：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-echo-和-print"><span class="toc-number">2.</span> <span class="toc-text">2. echo 和 print</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-EOF"><span class="toc-number">3.</span> <span class="toc-text">3. EOF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-数据类型"><span class="toc-number">4.</span> <span class="toc-text">4.数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-常量"><span class="toc-number">5.</span> <span class="toc-text">5.常量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-字符串"><span class="toc-number">6.</span> <span class="toc-text">5.字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-运算符"><span class="toc-number">7.</span> <span class="toc-text">6.运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-PHP-数组"><span class="toc-number">8.</span> <span class="toc-text">7.PHP 数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-PHP超级全局变量"><span class="toc-number">9.</span> <span class="toc-text">8.PHP超级全局变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-魔术常量"><span class="toc-number">10.</span> <span class="toc-text">9.魔术常量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-命名空间"><span class="toc-number">11.</span> <span class="toc-text">10.命名空间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#持续更新…"><span class="toc-number">12.</span> <span class="toc-text">持续更新…</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"PHP笔记　| 炎の博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2019/01/14/记一次防止渗透的措施/" title="上一篇: 记一次防止渗透的措施">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/01/29/Yii操作Mysql/">Yii操作Mysql</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/29/NodeJs-domain的作用/">NodeJs domain的作用</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/29/NodeJs-path的join和resolve的区别/">NodeJs path的join和resolve的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/28/安装ElasticSearch_head插件/">安装ElasticSearch_head插件</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/27/SpringBoot整合ElasticSearch/">SpringBoot整合ElasticSearch</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/26/PHP-字符串/">PHP_字符串</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/25/ElasticSearch笔记/">ElasticSearch笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/java实现动态代理/">java实现动态代理</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/Spring相关/">Spring相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/17/第十章-内部类/">第十章 内部类</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/16/git常用命令/">git常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/15/Java基础零散笔记/">Java基础笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/15/第三章-操作符/">第三章 操作符</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/14/记一次防止渗透的措施/">记一次防止渗透的措施</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/14/PHP笔记/">PHP笔记</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2019 LinJiayan
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style="display:none">
+                        <span id="page-visit" title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
