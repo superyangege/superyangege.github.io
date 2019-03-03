@@ -191,9 +191,9 @@
       
         <tags>
             
-            <tag> SpringBoot </tag>
-            
             <tag> ElasticSearch </tag>
+            
+            <tag> SpringBoot </tag>
             
         </tags>
       
