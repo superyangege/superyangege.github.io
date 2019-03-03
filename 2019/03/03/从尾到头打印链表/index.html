@@ -15,17 +15,18 @@
 
 
 
-<meta name="description" content="广东工业大学-大三-信息与计算科学">
-<meta name="keywords" content="java,spring,springboot,nodejs,php">
-<meta property="og:type" content="website">
-<meta property="og:title" content="炎の博客">
-<meta property="og:url" content="http://yoursite.com/tags/内部类/index.html">
+<meta name="description" content="输入一个链表，按链表值从尾到头的顺序返回一个ArrayList。">
+<meta name="keywords" content="算法,链表">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从尾到头打印链表">
+<meta property="og:url" content="http://yoursite.com/2019/03/03/从尾到头打印链表/index.html">
 <meta property="og:site_name" content="炎の博客">
-<meta property="og:description" content="广东工业大学-大三-信息与计算科学">
+<meta property="og:description" content="输入一个链表，按链表值从尾到头的顺序返回一个ArrayList。">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-03T12:44:50.028Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="炎の博客">
-<meta name="twitter:description" content="广东工业大学-大三-信息与计算科学">
+<meta name="twitter:title" content="从尾到头打印链表">
+<meta name="twitter:description" content="输入一个链表，按链表值从尾到头的顺序返回一个ArrayList。">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -57,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Tag: 内部类 | 炎の博客</title>
+<title>从尾到头打印链表 | 炎の博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -67,9 +68,9 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
+        isPost: true,
         isArchive: false,
-        isTag: true,
+        isTag: false,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
@@ -282,56 +283,167 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-从尾到头打印链表" class="article article-type-post" itemscope="" itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2019/01/17/第十章-内部类/" class="archive-article-date">
-      <time datetime="2019-01-17T02:52:05.000Z" itemprop="datePublished">01-17</time>
+    <div class="article-meta">
+      <a href="/2019/03/03/从尾到头打印链表/" class="article-date">
+      <time datetime="2019-03-03T12:43:58.000Z" itemprop="datePublished">2019-03-03</time>
 </a>
 
 
-        </div>
-         
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/17/第十章-内部类/">第十章 内部类</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      从尾到头打印链表
     </h1>
   
 
-        <div class="article-info info-on-archive">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 
-          
+        
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java编程思想/">java编程思想</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/内部类/">内部类</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/链表/">链表</a></li></ul>
     </div>
 
-        </div>
         <div class="clearfix"></div>
-    </header>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>输入一个链表，按链表值从尾到头的顺序返回一个ArrayList。</p>
+<h1 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">1-&gt;2-&gt;3-&gt;4-&gt;5</span><br><span class="line">返回:</span><br><span class="line">List:5-&gt;4-&gt;3-&gt;2-&gt;1</span><br></pre></td></tr></table></figure>
+<h1 id="思路一"><a href="#思路一" class="headerlink" title="思路一:"></a>思路一:</h1><p>利用方法调用是进栈出栈的特性,利用递归,先走到栈底,等最后的方法出栈时,就能获取到最后的节点的值<br>代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//创建一个结果list,传入递归方法以保证整个递归过程都能往list中加数据</span><br><span class="line">public ArrayList&lt;Integer&gt; printListFromTailToHead(ListNode listNode) &#123;</span><br><span class="line">    ArrayList&lt;Integer&gt; list = new ArrayList&lt;&gt;();</span><br><span class="line">    getNext(listNode,list);</span><br><span class="line">    return list;</span><br><span class="line">&#125;</span><br><span class="line">//递归方法,先递归调用自身,调用完再把当前节点的值添加到list中</span><br><span class="line">private void getNext(ListNode listNode, List&lt;Integer&gt; list) &#123;</span><br><span class="line">    if(listNode==null) return;</span><br><span class="line">    getNext(listNode.next,list);</span><br><span class="line">    list.add(listNode.val);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="思路二"><a href="#思路二" class="headerlink" title="思路二:"></a>思路二:</h1><p>先反转链表,再从头到尾把链表节点的值加入到list中.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public ArrayList&lt;Integer&gt; printListFromTailToHead2(ListNode listNode) &#123;</span><br><span class="line">//定义一个临时节点</span><br><span class="line">    ListNode head = listNode;</span><br><span class="line">    ListNode newHead = null;</span><br><span class="line">    while(head!=null) &#123;</span><br><span class="line">        //获取head的下一个节点保存起来</span><br><span class="line">        ListNode temp = head.next;</span><br><span class="line">        //令head节点的next指针指向newHead,也就是null</span><br><span class="line">        head.next = newHead;</span><br><span class="line">        //往后移动,把newHead指向原来head节点的位置,把head指向刚才保存的temp节点,也就是原先的head的next节点</span><br><span class="line">        newHead = head;</span><br><span class="line">        head = temp;</span><br><span class="line">    &#125;</span><br><span class="line">    //循环结束后,newHead节点就是反转后的链表的链表头</span><br><span class="line">    ArrayList&lt;Integer&gt; res = new ArrayList();</span><br><span class="line">    while(newHead!=null)&#123;</span><br><span class="line">        res.add(newHead.val);</span><br><span class="line">        newHead = newHead.next;</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
   </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2019/03/03/从尾到头打印链表/">从尾到头打印链表</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">LinJiayan</a></p>
+        <p><span>发布时间:</span>2019-03-03, 20:43:58</p>
+        <p><span>最后更新:</span>2019-03-03, 20:44:50</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2019/03/03/从尾到头打印链表/" title="从尾到头打印链表">http://yoursite.com/2019/03/03/从尾到头打印链表/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/03/03/从尾到头打印链表/　　作者: LinJiayan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2019/03/03/替换空格/">
+                    替换空格
+                </a>
+            </div>
+        
+    </nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#题目描述"><span class="toc-number">1.</span> <span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#样例"><span class="toc-number">2.</span> <span class="toc-text">样例</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思路一"><span class="toc-number">3.</span> <span class="toc-text">思路一:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思路二"><span class="toc-number">4.</span> <span class="toc-text">思路二:</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"从尾到头打印链表　| 炎の博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
 
     
 
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2019/03/03/替换空格/" title="下一篇: 替换空格">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/03/03/从尾到头打印链表/">从尾到头打印链表</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/03/替换空格/">替换空格</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/03/二维数组中的查找/">二维数组中的查找</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/21/JVM-堆内存设置原理/">JVM 堆内存设置原理</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/20/JS中的Promise对象/">JS中的Promise对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/19/JS中const-var-let的区别/">JS中const,var,let的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/16/SpringBoot整合SpringSecurity/">SpringBoot整合SpringSecurity</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/29/Yii操作Mysql/">Yii操作Mysql</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/29/NodeJs-domain的作用/">NodeJs domain的作用</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/29/NodeJs-path的join和resolve的区别/">NodeJs path的join和resolve的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/28/安装ElasticSearch_head插件/">安装ElasticSearch_head插件</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/27/SpringBoot整合ElasticSearch/">SpringBoot整合ElasticSearch</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/26/PHP-字符串/">PHP_字符串</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/25/ElasticSearch笔记/">ElasticSearch笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/java实现动态代理/">java实现动态代理</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/Spring相关/">Spring相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/17/第十章-内部类/">第十章 内部类</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/16/git常用命令/">git常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/15/Java基础零散笔记/">Java基础笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/15/第三章-操作符/">第三章 操作符</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/14/记一次防止渗透的措施/">记一次防止渗透的措施</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/14/PHP笔记/">PHP笔记</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
