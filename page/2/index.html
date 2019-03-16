@@ -202,7 +202,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NodeJs/">NodeJs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringSecurity/">SpringSecurity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Yii/">Yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java编程思想/">java编程思想</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内部类/">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态代理/">动态代理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字符串/">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作符/">操作符</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数组/">数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/记/">记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/链表/">链表</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NodeJs/">NodeJs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringSecurity/">SpringSecurity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Yii/">Yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java编程思想/">java编程思想</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二进制/">二进制</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内部类/">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态代理/">动态代理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字符串/">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作符/">操作符</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数组/">数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/斐波那契数列/">斐波那契数列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/记/">记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/链表/">链表</a></li></ul>
                     </div>
                 </section>
                 
@@ -288,6 +288,454 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-JVM-堆内存设置原理" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/02/21/JVM-堆内存设置原理/" class="article-date">
+      <time datetime="2019-02-20T17:01:07.000Z" itemprop="datePublished">2019-02-21</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/21/JVM-堆内存设置原理/">JVM 堆内存设置原理</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              JVM堆内存分为2块：Permanent Space 和 Heap Space。Permanent 即 持久代（Permanent Generation），主要存放的是**Java类定义信息**，与垃圾收集器要收集的Java对象关系不大。
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2019/02/21/JVM-堆内存设置原理/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-JS中的Promise对象" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/02/20/JS中的Promise对象/" class="article-date">
+      <time datetime="2019-02-20T02:31:36.000Z" itemprop="datePublished">2019-02-20</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/20/JS中的Promise对象/">JS中的Promise对象</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              Promise 的含义:Promise 是异步编程的一种解决方案，比传统的解决方案——回调函数和事件——更合理和更强大。它由社区最早提出和实现，ES6 将其写进了语言标准，统一了用法，原生提供了Promise对象。
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2019/02/20/JS中的Promise对象/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-JS中const-var-let的区别" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/02/19/JS中const-var-let的区别/" class="article-date">
+      <time datetime="2019-02-19T14:19:45.000Z" itemprop="datePublished">2019-02-19</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/19/JS中const-var-let的区别/">JS中const,var,let的区别</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              JS中作用域有：全局作用域、函数作用域。没有块作用域的概念。ECMAScript 6(简称ES6)中新增了块级作用域。 块作用域由 { } 包括，if语句和for语句里面的{ }也属于块作用域。
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2019/02/19/JS中const-var-let的区别/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-SpringBoot整合SpringSecurity" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/02/16/SpringBoot整合SpringSecurity/" class="article-date">
+      <time datetime="2019-02-16T11:28:08.000Z" itemprop="datePublished">2019-02-16</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/16/SpringBoot整合SpringSecurity/">SpringBoot整合SpringSecurity</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              一个能够为基于Spring的企业应用系统提供声明式的安全訪问控制解决方式的安全框架（简单说是对访问权限进行控制嘛），应用的安全性包括用户认证（Authentication）和用户授权（Authorization）两个部分。 spring security的主要核心功能为 认证和授权，所有的架构也是基于这两个核心功能去实现的。
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpringBoot/">SpringBoot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpringSecurity/">SpringSecurity</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2019/02/16/SpringBoot整合SpringSecurity/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Yii操作Mysql" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/01/29/Yii操作Mysql/" class="article-date">
+      <time datetime="2019-01-29T12:11:01.000Z" itemprop="datePublished">2019-01-29</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/29/Yii操作Mysql/">Yii操作Mysql</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              记录Yii操作Mysql过程
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Yii/">Yii</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2019/01/29/Yii操作Mysql/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-NodeJs-domain的作用" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/01/29/NodeJs-domain的作用/" class="article-date">
+      <time datetime="2019-01-29T12:09:20.000Z" itemprop="datePublished">2019-01-29</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/29/NodeJs-domain的作用/">NodeJs domain的作用</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              Nodejs中domain的作用
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NodeJs/">NodeJs</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2019/01/29/NodeJs-domain的作用/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-NodeJs-path的join和resolve的区别" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/01/29/NodeJs-path的join和resolve的区别/" class="article-date">
+      <time datetime="2019-01-29T08:03:43.000Z" itemprop="datePublished">2019-01-29</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/29/NodeJs-path的join和resolve的区别/">NodeJs path的join和resolve的区别</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              NodeJs 中join和resolve方法的区别解析
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NodeJs/">NodeJs</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2019/01/29/NodeJs-path的join和resolve的区别/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-安装ElasticSearch_head插件" class="article article-type-post" itemscope="" itemprop="blogPost">
   
@@ -463,454 +911,6 @@
       
         <p class="article-more-link">
           <a href="/2019/01/26/PHP-字符串/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-ElasticSearch笔记" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/01/25/ElasticSearch笔记/" class="article-date">
-      <time datetime="2019-01-25T07:14:02.000Z" itemprop="datePublished">2019-01-25</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/25/ElasticSearch笔记/">ElasticSearch笔记</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              全文搜索属于最常见的需求，开源的 Elasticsearch是目前全文搜索引擎的首选。
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2019/01/25/ElasticSearch笔记/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-java实现动态代理" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/01/19/java实现动态代理/" class="article-date">
-      <time datetime="2019-01-19T11:04:56.000Z" itemprop="datePublished">2019-01-19</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/19/java实现动态代理/">java实现动态代理</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>java的动态代理机制中，有两个重要的类或接口，一个是 <strong>InvocationHandler(Interface)</strong>、另一个是 Proxy(Class)<br>
-          
-      
-    </p></div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动态代理/">动态代理</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2019/01/19/java实现动态代理/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Spring相关" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/01/19/Spring相关/" class="article-date">
-      <time datetime="2019-01-19T09:45:30.000Z" itemprop="datePublished">2019-01-19</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/19/Spring相关/">Spring相关</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="IOC-DI"><a href="#IOC-DI" class="headerlink" title="IOC/DI"></a>IOC/DI</h2>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/">Spring</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2019/01/19/Spring相关/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-第十章-内部类" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/01/17/第十章-内部类/" class="article-date">
-      <time datetime="2019-01-17T02:52:05.000Z" itemprop="datePublished">2019-01-17</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/17/第十章-内部类/">第十章 内部类</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="了解外围类-并且能与之通信"><a href="#了解外围类-并且能与之通信" class="headerlink" title="了解外围类,并且能与之通信"></a>了解外围类,并且能与之通信</h2>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java编程思想/">java编程思想</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/内部类/">内部类</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2019/01/17/第十章-内部类/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-git常用命令" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/01/16/git常用命令/" class="article-date">
-      <time datetime="2019-01-16T12:08:04.000Z" itemprop="datePublished">2019-01-16</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/16/git常用命令/">git常用命令</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h3 id="git-clone-url-克隆项目到本地"><a href="#git-clone-url-克隆项目到本地" class="headerlink" title="git clone url 克隆项目到本地"></a>git clone url 克隆项目到本地</h3>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2019/01/16/git常用命令/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Java基础零散笔记" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/01/15/Java基础零散笔记/" class="article-date">
-      <time datetime="2019-01-15T07:55:12.000Z" itemprop="datePublished">2019-01-15</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/15/Java基础零散笔记/">Java基础笔记</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>1.URL u =new URL(“<a href="http://www.123.com&quot;);。如果www.123.com不存在，则返回______。" target="_blank" rel="noopener">http://www.123.com&quot;);。如果www.123.com不存在，则返回______。</a><br>
-          
-      
-    </p></div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2019/01/15/Java基础零散笔记/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-第三章-操作符" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/01/15/第三章-操作符/" class="article-date">
-      <time datetime="2019-01-15T02:51:54.000Z" itemprop="datePublished">2019-01-15</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/15/第三章-操作符/">第三章 操作符</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="逻辑操作符"><a href="#逻辑操作符" class="headerlink" title="逻辑操作符:"></a>逻辑操作符:</h2>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java编程思想/">java编程思想</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/操作符/">操作符</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2019/01/15/第三章-操作符/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
